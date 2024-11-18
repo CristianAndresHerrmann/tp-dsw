@@ -16,18 +16,18 @@ import javax.swing.table.TableColumn;
 import com.mycompany.tp.dsw.controller.VendedorController;
 import com.mycompany.tp.dsw.dto.VendedorDto;
 import com.mycompany.tp.dsw.model.Vendedor;
-import javax.swing.JPanel;
 
 /**
  *
  * @author Usuario
  */
 public class JplVendedor extends javax.swing.JPanel {
-
+    FrmApp parentFrame;
     VendedorController vendedorController;
 
-    public JplVendedor() {
+    public JplVendedor(FrmApp parentFrame) {
         initComponents();
+        this.parentFrame = parentFrame;
 
         vendedorController = new VendedorController();
         mostrarTabla(vendedorController.obtenerTodosLosVendedores());
@@ -74,8 +74,8 @@ public class JplVendedor extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbVendedorDatos = new javax.swing.JTable();
-        btnVerItem = new javax.swing.JButton();
         btnVerDetalles = new javax.swing.JButton();
+        btnProductos = new javax.swing.JButton();
         btnCargarDatos = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -229,16 +229,7 @@ public class JplVendedor extends javax.swing.JPanel {
 
         jTabbedPaneCRUD.addTab("Modificar", jPanelModificar);
 
-        jPanelEliminar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanelEliminarFocusGained(evt);
-            }
-        });
-        jPanelEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanelEliminarMouseClicked(evt);
-            }
-        });
+
         jPanelEliminar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jPanelEliminarPropertyChange(evt);
@@ -393,17 +384,18 @@ public class JplVendedor extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbVendedorDatos);
 
-        btnVerItem.setText("Productos");
-        btnVerItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerItemActionPerformed(evt);
-            }
-        });
-
         btnVerDetalles.setText("Detalles");
         btnVerDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerDetallesActionPerformed(evt);
+
+    }
+        });
+
+        btnProductos.setText("Productos");
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductosActionPerformed(evt);
             }
         });
 
@@ -415,7 +407,7 @@ public class JplVendedor extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(btnVerItem)
+                        .addComponent(btnProductos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVerDetalles))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -425,14 +417,14 @@ public class JplVendedor extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnVerDetalles)
-                    .addComponent(btnVerItem))
-                .addGap(0, 3, Short.MAX_VALUE))
+                    .addComponent(btnProductos))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 560, 250));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, 250));
 
         btnCargarDatos.setText("CargarDatos");
         btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -444,6 +436,10 @@ public class JplVendedor extends javax.swing.JPanel {
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        parentFrame.cambiarPanel(parentFrame.itemMenuPane);
+    }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnVerItemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnVerItemActionPerformed
         // TODO add your handling code here:
@@ -529,14 +525,6 @@ public class JplVendedor extends javax.swing.JPanel {
 
     }// GEN-LAST:event_btnCargarDatosActionPerformed
 
-    private void btnRestaurantesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRestaurantesActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnRestaurantesActionPerformed
-
-    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnClientesActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnClientesActionPerformed
-
     private void txtNombreAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNombreAgregarActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_txtNombreAgregarActionPerformed
@@ -553,9 +541,6 @@ public class JplVendedor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }// GEN-LAST:event_txtLongitudAgregarActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSalirActionPerformed
-
-    }// GEN-LAST:event_btnSalirActionPerformed
 
     private void tbVendedorDatosMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbVendedorDatosMouseClicked
         // TODO add your handling code here:
@@ -746,9 +731,6 @@ public class JplVendedor extends javax.swing.JPanel {
         }
     }
 
-    public JPanel getjPanelClientes() {
-        return jPanelClientes;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarDatos;
@@ -759,8 +741,8 @@ public class JplVendedor extends javax.swing.JPanel {
     private javax.swing.JButton btnLimpiarEliminar;
     private javax.swing.JButton btnLimpiarModificar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnVerDetalles;
-    private javax.swing.JButton btnVerItem;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelAgregar;

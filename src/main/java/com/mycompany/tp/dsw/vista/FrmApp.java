@@ -19,13 +19,16 @@ public class FrmApp extends javax.swing.JFrame {
     final static String CLIENTES = "Clientes";
     JplVendedor vendedorPane;
     JplCliente clientePane;
+    JplItemMenu itemMenuPane;
     public FrmApp() {
         initComponents();
         setLocationRelativeTo(null);
         setSize(1000, 540);
         setResizable(false);
-        vendedorPane = new JplVendedor();
+        
+        vendedorPane = new JplVendedor(this);
         clientePane = new JplCliente();
+        itemMenuPane = new JplItemMenu(this);
         
         jTabbedPane.add(VENDEDORES, vendedorPane );
         jTabbedPane.add(CLIENTES, clientePane );
@@ -44,6 +47,12 @@ public class FrmApp extends javax.swing.JFrame {
             vendedorPane.setVisible(false);
             clientePane.setVisible(true);
         }
+    }
+    
+    public void cambiarPanel(javax.swing.JPanel panel) {
+        setContentPane(panel); // Cambiamos el contenido principal
+        revalidate(); // Actualizamos la vista
+        repaint(); // Redibujamos el JFrame
     }
 
     /**

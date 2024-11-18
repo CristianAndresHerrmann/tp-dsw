@@ -4,19 +4,24 @@
  */
 package com.mycompany.tp.dsw.vista;
 
-import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 /**
  *
  * @author Usuario
  */
-public class JplCliente extends javax.swing.JPanel {
+public class JplItemMenu extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JplCliente
-     */
-    public JplCliente() {
+    FrmApp parentFrame;
+    public JplItemMenu(FrmApp parentFrame) {
         initComponents();
+        this.parentFrame = parentFrame;
+        tbtnPlatos.setSelected(true);
+        
+        // Ejecutar la acción asociada a tbtnPlatos
+        tbtnPlatosActionPerformed(new java.awt.event.ActionEvent(tbtnPlatos, java.awt.event.ActionEvent.ACTION_PERFORMED, null));
+        
+        
     }
 
     /**
@@ -28,8 +33,10 @@ public class JplCliente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngPlatosBebidas = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTabbedPane = new javax.swing.JTabbedPane();
+        jTabbedPaneCRUD = new javax.swing.JTabbedPane();
         jPanelAgregar = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnLimpiarAgregar = new javax.swing.JButton();
@@ -57,18 +64,25 @@ public class JplCliente extends javax.swing.JPanel {
         btnLimpiarBuscar = new javax.swing.JButton();
         txtIdBuscar = new javax.swing.JTextField();
         txtNombreBuscar = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbVendedorDatos = new javax.swing.JTable();
-        btnPedidos = new javax.swing.JButton();
-        btnVerDetalles = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        tbtnPlatos = new javax.swing.JToggleButton();
+        tbtnBebidas = new javax.swing.JToggleButton();
         btnCargarDatos = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        btnVolver = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        btnVerDetalles = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(960, 420));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "CLIENTES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "PRODUCTOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelAgregar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,7 +147,7 @@ public class JplCliente extends javax.swing.JPanel {
         });
         jPanelAgregar.add(txtNombreAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 220, -1));
 
-        jTabbedPane.addTab("Agregar", jPanelAgregar);
+        jTabbedPaneCRUD.addTab("Agregar", jPanelAgregar);
 
         jPanelModificar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -213,7 +227,7 @@ public class JplCliente extends javax.swing.JPanel {
         });
         jPanelModificar.add(btnLimpiarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
-        jTabbedPane.addTab("Modificar", jPanelModificar);
+        jTabbedPaneCRUD.addTab("Modificar", jPanelModificar);
 
         jPanelEliminar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -303,7 +317,7 @@ public class JplCliente extends javax.swing.JPanel {
         });
         jPanelEliminar.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
 
-        jTabbedPane.addTab("Eliminar", jPanelEliminar);
+        jTabbedPaneCRUD.addTab("Eliminar", jPanelEliminar);
 
         jPanelBuscar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -352,11 +366,13 @@ public class JplCliente extends javax.swing.JPanel {
         });
         jPanelBuscar.add(txtNombreBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 220, -1));
 
-        jTabbedPane.addTab("Buscar", jPanelBuscar);
+        jTabbedPaneCRUD.addTab("Buscar", jPanelBuscar);
 
-        jPanel2.add(jTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 330, 390));
+        jPanel2.add(jTabbedPaneCRUD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 330, 390));
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelTable.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelTable.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Platos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
+        jPanelTable.setLayout(new java.awt.BorderLayout());
 
         tbVendedorDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -379,12 +395,96 @@ public class JplCliente extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbVendedorDatos);
 
-        btnPedidos.setText("Pedidos");
-        btnPedidos.addActionListener(new java.awt.event.ActionListener() {
+        jPanelTable.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.add(jPanelTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 580, 250));
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+
+        btngPlatosBebidas.add(tbtnPlatos);
+        tbtnPlatos.setText("Platos");
+        tbtnPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPedidosActionPerformed(evt);
+                tbtnPlatosActionPerformed(evt);
             }
         });
+
+        btngPlatosBebidas.add(tbtnBebidas);
+        tbtnBebidas.setText("Bebidas");
+        tbtnBebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbtnBebidasActionPerformed(evt);
+            }
+        });
+
+        btnCargarDatos.setText("CargarDatos");
+        btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarDatosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(406, Short.MAX_VALUE)
+                .addComponent(tbtnPlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tbtnBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 4, Short.MAX_VALUE)
+                    .addComponent(btnCargarDatos)
+                    .addGap(0, 493, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tbtnBebidas)
+                    .addComponent(tbtnPlatos))
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 8, Short.MAX_VALUE)
+                    .addComponent(btnCargarDatos)
+                    .addGap(0, 8, Short.MAX_VALUE)))
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 580, 40));
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 835, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVolver)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 920, -1));
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
         btnVerDetalles.setText("Detalles");
         btnVerDetalles.addActionListener(new java.awt.event.ActionListener() {
@@ -397,38 +497,24 @@ public class JplCliente extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(btnPedidos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVerDetalles))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(516, Short.MAX_VALUE)
+                .addComponent(btnVerDetalles)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVerDetalles)
-                    .addComponent(btnPedidos))
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnVerDetalles)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 570, 260));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 580, 40));
 
-        btnCargarDatos.setText("CargarDatos");
-        btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarDatosActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
+        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        add(jPanel2, java.awt.BorderLayout.CENTER);
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -555,10 +641,6 @@ public class JplCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbVendedorDatosMouseClicked
 
-    private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPedidosActionPerformed
-
     private void btnVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDetallesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVerDetallesActionPerformed
@@ -567,9 +649,21 @@ public class JplCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
-    public JPanel getjPanelRestaurantes() {
-        return jPanelRestaurantes;
-    }
+    private void tbtnBebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnBebidasActionPerformed
+        TitledBorder border = (TitledBorder) jPanelTable.getBorder();
+        border.setTitle("COMIDAS");
+        jPanelTable.repaint();
+    }//GEN-LAST:event_tbtnBebidasActionPerformed
+
+    private void tbtnPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnPlatosActionPerformed
+        TitledBorder border = (TitledBorder) jPanelTable.getBorder();
+        border.setTitle("PLATOS");
+        jPanelTable.repaint();
+    }//GEN-LAST:event_tbtnPlatosActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        parentFrame.cambiarPanel(parentFrame.vendedorPane);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -581,17 +675,24 @@ public class JplCliente extends javax.swing.JPanel {
     private javax.swing.JButton btnLimpiarEliminar;
     private javax.swing.JButton btnLimpiarModificar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnPedidos;
     private javax.swing.JButton btnVerDetalles;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.ButtonGroup btngPlatosBebidas;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelAgregar;
     private javax.swing.JPanel jPanelBuscar;
     private javax.swing.JPanel jPanelEliminar;
     private javax.swing.JPanel jPanelModificar;
+    private javax.swing.JPanel jPanelTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane;
+    private javax.swing.JTabbedPane jTabbedPaneCRUD;
     private javax.swing.JTable tbVendedorDatos;
+    private javax.swing.JToggleButton tbtnBebidas;
+    private javax.swing.JToggleButton tbtnPlatos;
     private javax.swing.JTextField txtDireccionAgregar;
     private javax.swing.JTextField txtDireccionEliminar;
     private javax.swing.JTextField txtDireccionModificar;

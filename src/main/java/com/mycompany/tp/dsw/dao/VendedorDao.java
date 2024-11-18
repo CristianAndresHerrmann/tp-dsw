@@ -60,7 +60,7 @@ public class VendedorDao {
 
     public List<Vendedor> findByNombre(String nombre) {
         List<Vendedor> vendedor = vendedores.stream()
-                .filter(v -> v.getNombre().toLowerCase().contains(nombre.toLowerCase()))
+                .filter(v -> v.getNombre().toLowerCase().contains(nombre.toLowerCase()) && v.getActivo().equals(true))
                 .toList();
         return vendedor;
     }

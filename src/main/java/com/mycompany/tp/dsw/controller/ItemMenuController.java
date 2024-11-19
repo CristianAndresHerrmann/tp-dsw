@@ -15,6 +15,7 @@ import com.mycompany.tp.dsw.model.Bebida;
 import com.mycompany.tp.dsw.model.Categoria;
 import com.mycompany.tp.dsw.model.Plato;
 import com.mycompany.tp.dsw.model.Vendedor;
+import com.mycompany.tp.dsw.model.ItemMenu;
 import com.mycompany.tp.dsw.service.MemoryManager;
 
 public class ItemMenuController {
@@ -49,8 +50,8 @@ public class ItemMenuController {
         }
     }
 
-    public Vendedor obtenerVendedor(VendedorDto vendedorDto) {
-        Integer id = Integer.parseInt(vendedorDto.getIdText());
+    public Vendedor obtenerVendedor(String idText) {
+        Integer id = Integer.parseInt(idText);
         return vendedorMemory.buscarVendedorPorId(id);
     }
 
@@ -76,5 +77,10 @@ public class ItemMenuController {
         Integer id = Integer.parseInt(vendedorDto.getIdText());
         return bebidaMemory.obtenerBebidaPorIdVendedor(id);
     }
-
+    
+    public ItemMenu obtenerItemPorId(String idText){
+        Integer id = Integer.parseInt(idText);
+        return platoMemory.filtrarPorId(id);
+    }
+    
 }

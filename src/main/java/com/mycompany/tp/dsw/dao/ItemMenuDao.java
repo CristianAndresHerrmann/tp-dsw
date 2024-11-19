@@ -40,7 +40,7 @@ public class ItemMenuDao {
                 850.0,
                 true,
                 true,
-                false,
+                true,
                 500.0,
                 101,
                 new BigDecimal("12.50"),

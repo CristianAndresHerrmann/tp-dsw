@@ -981,7 +981,7 @@ public class JplItemMenu extends javax.swing.JPanel {
         String descripcion = jTextAreaAgregar.getText();
         String graduacionAlcoholica = jSpinnerGraduacionAlcoholica.getValue().toString();
 
-        Vendedor vendedor = itemMenuController.obtenerVendedor(vendedorDto);
+        Vendedor vendedor = itemMenuController.obtenerVendedor(vendedorDto.getIdText());
 
         switch (tipoCategoria) {
             case "Plato":
@@ -1022,7 +1022,7 @@ public class JplItemMenu extends javax.swing.JPanel {
     }// GEN-LAST:event_btnLimpiarAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        
     }// GEN-LAST:event_btnModificarActionPerformed
 
     private void jPanelModificarPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_jPanelModificarPropertyChange
@@ -1074,8 +1074,44 @@ public class JplItemMenu extends javax.swing.JPanel {
     }// GEN-LAST:event_btnVerDetallesActionPerformed
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCargarDatosActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = tbItemMenuDatos.getSelectedRow();
+
+        // Verificar si hay una fila seleccionada
+        if (selectedRow != -1) {
+            String id = tbItemMenuDatos.getValueAt(selectedRow, 0).toString();
+            ItemMenu selectedItem = itemMenuController.obtenerItemPorId(id);
+            cargarDatos(selectedItem);
+        }
     }// GEN-LAST:event_btnCargarDatosActionPerformed
+    
+    private void cargarDatos(ItemMenu item){
+        switch(item.getClass().getSimpleName()){
+            case "Plato":
+                Plato plato = (Plato) item;
+                if (jTabbedPaneCRUD.getSelectedIndex() == 1) { // Modificar
+                    txtIDModificar.setText(plato.getId().toString());
+                    txtNombreModificar.setText(plato.getNombre());
+                    txtPrecioModificar.setText(plato.getPrecio().toString());
+                    txtCaTmModificar.setText(plato.getCalorias().toString());
+                    txtPeVoModificar.setText(plato.getPeso().toString());
+                    jTextAreaModificar.setText(plato.getDescripcion());
+                    jComboBoxCategoriaModificar.setSelectedItem(plato.getCategoria().getNombre());
+                    
+                    Boolean aptoCeliaco = plato.getAptoCeliaco();
+                    jRadioButtonSI.setSelected(aptoCeliaco);
+                    jRadioButtonNO.setSelected(!aptoCeliaco);
+                } else if (jTabbedPaneCRUD.getSelectedIndex() == 2) { // Eliminar
+                }
+                break;
+            case "Bebida":
+                Bebida bebida = (Bebida) item;
+                if (jTabbedPaneCRUD.getSelectedIndex() == 1) { // Modificar
+            
+                } else if (jTabbedPaneCRUD.getSelectedIndex() == 2) { // Eliminar
+                }
+                break;   
+        }
+    }
 
     private void tbtnBebidasActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tbtnBebidasActionPerformed
         TitledBorder border = (TitledBorder) jPanelTable.getBorder();

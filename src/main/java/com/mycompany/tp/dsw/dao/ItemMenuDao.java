@@ -76,17 +76,14 @@ public class ItemMenuDao {
     public void update(ItemMenu itemMenu) {
         switch (itemMenu.getClass().getSimpleName()) {
             case "Plato":
-                System.out.println("PLATO ItemMenuDao ID: " + itemMenu.getId());
                 PlatoDao platoDao = new PlatoDao();
                 platoDao.update((Plato) itemMenu);
                 break;
             case "Bebida":
-                System.out.println("BEBIDA ItemMenuDao ID: " + itemMenu.getId());
                 BebidaDao bebidaDao = new BebidaDao();
                 bebidaDao.update((Bebida) itemMenu);
                 break;
             default:
-                System.out.println("DEFAULT ItemMenuDao");
                 break;
         }
 

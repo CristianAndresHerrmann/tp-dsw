@@ -62,8 +62,6 @@ public class ItemMenuMemory {
      */
     protected void modificarItemMenu(ItemMenuDto itemMenuDto) {
         ItemMenu itemMenu = parseItemMenu(itemMenuDto);
-        System.out.println("ItemMenu: " + itemMenu.toString());
-        System.out.println("Class: " + itemMenu.getClass().getSimpleName());
         itemMenuDao.update(itemMenu);
     }
 
@@ -125,17 +123,13 @@ public class ItemMenuMemory {
         switch (itemMenuDto.getClass().getSimpleName()) {
             case "PlatoDto":
                 PlatoDto platoDto = (PlatoDto) itemMenuDto;
-                System.out.println("Aca no deberia estar");
                 return new Plato(platoDto);
             case "BebidaDto":
-                System.out.println("ID en bebidaDto ItemMenuMemory: " + itemMenuDto.getId());
                 BebidaDto bebidaDto = (BebidaDto) itemMenuDto;
-                System.out.println("ID en bebidaDto ItemMenuMemory: " + bebidaDto.getId());
                 Bebida bebida = new Bebida(bebidaDto);
                 return bebida;
 
             default:
-                System.out.println("No tiene que pasar por aca");
                 return null;
         }
     }

@@ -1022,7 +1022,7 @@ public class JplItemMenu extends javax.swing.JPanel {
     }// GEN-LAST:event_btnLimpiarAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnModificarActionPerformed
-        
+
     }// GEN-LAST:event_btnModificarActionPerformed
 
     private void jPanelModificarPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_jPanelModificarPropertyChange
@@ -1083,9 +1083,9 @@ public class JplItemMenu extends javax.swing.JPanel {
             cargarDatos(selectedItem);
         }
     }// GEN-LAST:event_btnCargarDatosActionPerformed
-    
-    private void cargarDatos(ItemMenu item){
-        switch(item.getClass().getSimpleName()){
+
+    private void cargarDatos(ItemMenu item) {
+        switch (item.getClass().getSimpleName()) {
             case "Plato":
                 Plato plato = (Plato) item;
                 if (jTabbedPaneCRUD.getSelectedIndex() == 1) { // Modificar
@@ -1096,20 +1096,48 @@ public class JplItemMenu extends javax.swing.JPanel {
                     txtPeVoModificar.setText(plato.getPeso().toString());
                     jTextAreaModificar.setText(plato.getDescripcion());
                     jComboBoxCategoriaModificar.setSelectedItem(plato.getCategoria().getNombre());
-                    
+
                     Boolean aptoCeliaco = plato.getAptoCeliaco();
-                    jRadioButtonSI.setSelected(aptoCeliaco);
-                    jRadioButtonNO.setSelected(!aptoCeliaco);
+                    jRadioButtonSIModificar.setSelected(aptoCeliaco);
+                    jRadioButtonNOModificar.setSelected(!aptoCeliaco);
                 } else if (jTabbedPaneCRUD.getSelectedIndex() == 2) { // Eliminar
+                    txtIDEliminar.setText(plato.getId().toString());
+                    txtNombreEliminar.setText(plato.getNombre());
+                    txtPrecioEliminar.setText(plato.getPrecio().toString());
+                    txtCaTmEliminar.setText(plato.getCalorias().toString());
+                    txtPeVoEliminar.setText(plato.getPeso().toString());
+                    jTextAreaEliminar.setText(plato.getDescripcion());
+                    jComboBoxCategoriaEliminar.setSelectedItem(plato.getCategoria().getNombre());
+
+                    Boolean aptoCeliaco = plato.getAptoCeliaco();
+                    jRadioButtonSIEliminar.setSelected(aptoCeliaco);
+                    jRadioButtonNOEliminar.setSelected(!aptoCeliaco);
                 }
                 break;
             case "Bebida":
                 Bebida bebida = (Bebida) item;
                 if (jTabbedPaneCRUD.getSelectedIndex() == 1) { // Modificar
-            
+                    txtIDModificar.setText(bebida.getId().toString());
+                    txtNombreModificar.setText(bebida.getNombre());
+                    txtPrecioModificar.setText(bebida.getPrecio().toString());
+                    txtCaTmModificar.setText(bebida.getTamano().toString());
+                    txtPeVoModificar.setText(bebida.getVolumen().toString());
+                    jTextAreaModificar.setText(bebida.getDescripcion());
+                    jComboBoxCategoriaModificar.setSelectedItem(bebida.getCategoria().getNombre());
+
+                    jSpinnerGraduacionAlcoholicaModificar.setValue(bebida.getGraduacionAlcoholica());
                 } else if (jTabbedPaneCRUD.getSelectedIndex() == 2) { // Eliminar
+                    txtIDEliminar.setText(bebida.getId().toString());
+                    txtNombreEliminar.setText(bebida.getNombre());
+                    txtPrecioEliminar.setText(bebida.getPrecio().toString());
+                    txtCaTmEliminar.setText(bebida.getTamano().toString());
+                    txtPeVoEliminar.setText(bebida.getVolumen().toString());
+                    jTextAreaEliminar.setText(bebida.getDescripcion());
+                    jComboBoxCategoriaEliminar.setSelectedItem(bebida.getCategoria().getNombre());
+
+                    jSpinnerGraduacionAlcoholicaEliminar.setValue(bebida.getGraduacionAlcoholica());
                 }
-                break;   
+                break;
         }
     }
 

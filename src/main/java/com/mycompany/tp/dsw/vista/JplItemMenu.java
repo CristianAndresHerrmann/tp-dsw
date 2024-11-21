@@ -5,7 +5,10 @@
 package com.mycompany.tp.dsw.vista;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
@@ -103,6 +106,9 @@ public class JplItemMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -124,7 +130,7 @@ public class JplItemMenu extends javax.swing.JPanel {
         jRadioButtonSI = new javax.swing.JRadioButton();
         jLabelAcGa = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jSpinnerGraduacionAlcoholica = new javax.swing.JSpinner();
+        jSpinnerGraduacionAlcoholicaAgregar = new javax.swing.JSpinner();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -134,8 +140,8 @@ public class JplItemMenu extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         txtNombreModificar = new javax.swing.JTextField();
         txtPrecioModificar = new javax.swing.JTextField();
-        btnLimpiarAgregar1 = new javax.swing.JButton();
         txtIDModificar = new javax.swing.JTextField();
+        btnLimpiarModificar = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         txtPeVoModificar = new javax.swing.JTextField();
         txtCaTmModificar = new javax.swing.JTextField();
@@ -153,8 +159,8 @@ public class JplItemMenu extends javax.swing.JPanel {
         jPanel13 = new javax.swing.JPanel();
         txtNombreEliminar = new javax.swing.JTextField();
         txtPrecioEliminar = new javax.swing.JTextField();
-        btnLimpiarAgregar2 = new javax.swing.JButton();
         txtIDEliminar = new javax.swing.JTextField();
+        btnLimpiarEliminar = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         txtPeVoEliminar = new javax.swing.JTextField();
         txtCaTmEliminar = new javax.swing.JTextField();
@@ -198,6 +204,17 @@ public class JplItemMenu extends javax.swing.JPanel {
                 new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPaneCRUD.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPaneCRUDStateChanged(evt);
+            }
+        });
+        jTabbedPaneCRUD.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTabbedPaneCRUDPropertyChange(evt);
+            }
+        });
+
         jPanelAgregar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnGuardar.setText("Guardar");
@@ -234,16 +251,16 @@ public class JplItemMenu extends javax.swing.JPanel {
                                 .addContainerGap()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel7Layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(btnLimpiarAgregar))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout
-                                                .createSequentialGroup()
                                                 .addComponent(txtNombreAgregar, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38,
                                                         Short.MAX_VALUE)
                                                 .addComponent(txtPrecioAgregar, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                jPanel7Layout.createSequentialGroup()
+                                                        .addGap(0, 0, Short.MAX_VALUE)
+                                                        .addComponent(btnLimpiarAgregar)))
                                 .addContainerGap()));
         jPanel7Layout.setVerticalGroup(
                 jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,8 +323,8 @@ public class JplItemMenu extends javax.swing.JPanel {
         jLabel2.setText("Categoria:");
         jPanel8.add(jLabel2);
         jLabel2.setBounds(170, 54, 60, 16);
-        jPanel8.add(jSpinnerGraduacionAlcoholica);
-        jSpinnerGraduacionAlcoholica.setBounds(40, 80, 38, 26);
+        jPanel8.add(jSpinnerGraduacionAlcoholicaAgregar);
+        jSpinnerGraduacionAlcoholicaAgregar.setBounds(40, 80, 38, 26);
 
         jPanel8.add(jComboBoxCategoria);
         jComboBoxCategoria.setBounds(170, 77, 130, 26);
@@ -370,13 +387,6 @@ public class JplItemMenu extends javax.swing.JPanel {
         txtPrecioModificar.setFocusCycleRoot(true);
         txtPrecioModificar.setName(""); // NOI18N
 
-        btnLimpiarAgregar1.setText("Limpiar");
-        btnLimpiarAgregar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarAgregar1ActionPerformed(evt);
-            }
-        });
-
         txtIDModificar.setForeground(new java.awt.Color(51, 51, 51));
         txtIDModificar.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
         txtIDModificar.setFocusCycleRoot(true);
@@ -384,6 +394,13 @@ public class JplItemMenu extends javax.swing.JPanel {
         txtIDModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDModificarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiarModificar.setText("Limpiar");
+        btnLimpiarModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarModificarActionPerformed(evt);
             }
         });
 
@@ -400,7 +417,7 @@ public class JplItemMenu extends javax.swing.JPanel {
                                                         130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnLimpiarAgregar1))
+                                                .addComponent(btnLimpiarModificar))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout
                                                 .createSequentialGroup()
                                                 .addComponent(txtNombreModificar,
@@ -416,12 +433,12 @@ public class JplItemMenu extends javax.swing.JPanel {
                 jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel10Layout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(btnLimpiarAgregar1))
                                         .addComponent(txtIDModificar, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel10Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(btnLimpiarModificar)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtPrecioModificar, javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -555,13 +572,6 @@ public class JplItemMenu extends javax.swing.JPanel {
         txtPrecioEliminar.setFocusCycleRoot(true);
         txtPrecioEliminar.setName(""); // NOI18N
 
-        btnLimpiarAgregar2.setText("Limpiar");
-        btnLimpiarAgregar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarAgregar2ActionPerformed(evt);
-            }
-        });
-
         txtIDEliminar.setForeground(new java.awt.Color(51, 51, 51));
         txtIDEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
         txtIDEliminar.setFocusCycleRoot(true);
@@ -569,6 +579,13 @@ public class JplItemMenu extends javax.swing.JPanel {
         txtIDEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDEliminarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiarEliminar.setText("Limpiar");
+        btnLimpiarEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarEliminarActionPerformed(evt);
             }
         });
 
@@ -584,7 +601,7 @@ public class JplItemMenu extends javax.swing.JPanel {
                                                         130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnLimpiarAgregar2))
+                                                .addComponent(btnLimpiarEliminar))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout
                                                 .createSequentialGroup()
                                                 .addComponent(txtNombreEliminar, javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -598,12 +615,12 @@ public class JplItemMenu extends javax.swing.JPanel {
                 jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel13Layout.createSequentialGroup()
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel13Layout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(btnLimpiarAgregar2))
                                         .addComponent(txtIDEliminar, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel13Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(btnLimpiarEliminar)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtPrecioEliminar, javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -921,13 +938,64 @@ public class JplItemMenu extends javax.swing.JPanel {
         add(jPanel6, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTabbedPaneCRUDPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_jTabbedPaneCRUDPropertyChange
+        // TODO add your handling code here:
+    }// GEN-LAST:event_jTabbedPaneCRUDPropertyChange
+
+    private void btnLimpiarEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLimpiarEliminarActionPerformed
+        vaciarFormEliminar();
+    }// GEN-LAST:event_btnLimpiarEliminarActionPerformed
+
+    private void vaciarFormEliminar() {
+        txtIDEliminar.setText("");
+        txtNombreEliminar.setText("");
+        txtPrecioEliminar.setText("");
+        txtCaTmEliminar.setText("");
+        txtPeVoEliminar.setText("");
+        jTextAreaEliminar.setText("");
+        buttonGroupAptoCeliaco.clearSelection();
+        jSpinnerGraduacionAlcoholicaEliminar.setValue(0);
+    }
+
+    private void btnLimpiarAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLimpiarAgregarActionPerformed
+        vaciarFormAgregar();
+    }// GEN-LAST:event_btnLimpiarAgregarActionPerformed
+
+    private void vaciarFormAgregar() {
+        txtNombreAgregar.setText("");
+        txtPrecioAgregar.setText("");
+        txtCaTmAgregar.setText("");
+        txtPeVoAgregar.setText("");
+        jTextAreaAgregar.setText("");
+        buttonGroupAptoCeliaco.clearSelection();
+        jSpinnerGraduacionAlcoholicaAgregar.setValue(0);
+    }
+
+    private void btnLimpiarModificarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLimpiarModificarActionPerformed
+        vaciarFormModificar();
+    }// GEN-LAST:event_btnLimpiarModificarActionPerformed
+
+    private void vaciarFormModificar() {
+        txtIDModificar.setText("");
+        txtNombreModificar.setText("");
+        txtPrecioModificar.setText("");
+        txtCaTmModificar.setText("");
+        txtPeVoModificar.setText("");
+        jTextAreaModificar.setText("");
+        buttonGroupAptoCeliaco.clearSelection();
+        jSpinnerGraduacionAlcoholicaModificar.setValue(0);
+    }
+
+    private void jTabbedPaneCRUDStateChanged(javax.swing.event.ChangeEvent evt) {// GEN-FIRST:event_jTabbedPaneCRUDStateChanged
+        vaciarFormAgregar();
+        vaciarFormEliminar();
+        vaciarFormModificar();
+        vaciarFormBuscar();
+    }// GEN-LAST:event_jTabbedPaneCRUDStateChanged
+
     private void txtNombreModificarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNombreModificarActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_txtNombreModificarActionPerformed
-
-    private void btnLimpiarAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLimpiarAgregar1ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnLimpiarAgregar1ActionPerformed
 
     private void txtPeVoModificarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtPeVoModificarActionPerformed
         // TODO add your handling code here:
@@ -940,10 +1008,6 @@ public class JplItemMenu extends javax.swing.JPanel {
     private void txtNombreEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNombreEliminarActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_txtNombreEliminarActionPerformed
-
-    private void btnLimpiarAgregar2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLimpiarAgregar2ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnLimpiarAgregar2ActionPerformed
 
     private void txtPeVoEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtPeVoEliminarActionPerformed
         // TODO add your handling code here:
@@ -979,28 +1043,16 @@ public class JplItemMenu extends javax.swing.JPanel {
         Boolean aptoCeliaco = jRadioButtonSI.isSelected();
         String categoria = (String) jComboBoxCategoria.getSelectedItem();
         String descripcion = jTextAreaAgregar.getText();
-        String graduacionAlcoholica = jSpinnerGraduacionAlcoholica.getValue().toString();
+        String graduacionAlcoholica = jSpinnerGraduacionAlcoholicaAgregar.getValue().toString();
 
         Vendedor vendedor = itemMenuController.obtenerVendedor(vendedorDto.getIdText());
 
         switch (tipoCategoria) {
             case "Plato":
-                Boolean aptoVegano;
-                Boolean aptoVegetariano;
-                switch (categoria) {
-                    case "comida vegana":
-                        aptoVegano = true;
-                        aptoVegetariano = true;
-                        break;
-                    case "comida vegetariana":
-                        aptoVegano = false;
-                        aptoVegetariano = true;
-                        break;
-                    default:
-                        aptoVegano = false;
-                        aptoVegetariano = false;
-                        break;
-                }
+                Map<String, Boolean> aptitudes = setearAptoAlimentacion(categoria);
+                boolean aptoVegano = aptitudes.get("aptoVegano");
+                boolean aptoVegetariano = aptitudes.get("aptoVegetariano");
+
                 PlatoDto platoDto = new PlatoDto(nombre, descripcion, precio, categoria, vendedor, caloriasTamano,
                         aptoCeliaco, aptoVegetariano, aptoVegano, pesoVolumen);
                 itemMenuController.guardarItemMenu(platoDto, tipoCategoria);
@@ -1011,26 +1063,88 @@ public class JplItemMenu extends javax.swing.JPanel {
                 BebidaDto bebidaDto = new BebidaDto(nombre, descripcion, precio, categoria, vendedor,
                         graduacionAlcoholica, caloriasTamano, pesoVolumen);
                 itemMenuController.guardarItemMenu(bebidaDto, tipoCategoria);
-                List<Bebida> bebdias = itemMenuController.obtenerBebidaPorIdVendedor(vendedorDto);
-                mostrarItemMenuEnPantalla(bebdias);
+                List<Bebida> bebidas = itemMenuController.obtenerBebidaPorIdVendedor(vendedorDto);
+                mostrarItemMenuEnPantalla(bebidas);
                 break;
         }
+        vaciarFormAgregar();
     }// GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnLimpiarAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLimpiarAgregarActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnLimpiarAgregarActionPerformed
+    private Map<String, Boolean> setearAptoAlimentacion(String categoria) {
+        Map<String, Boolean> aptitudes = new HashMap<>();
+
+        switch (categoria.toLowerCase()) { // Manejo case insensitive
+            case "comida vegana":
+                aptitudes.put("aptoVegano", true);
+                aptitudes.put("aptoVegetariano", true);
+                break;
+            case "comida vegetariana":
+                aptitudes.put("aptoVegano", false);
+                aptitudes.put("aptoVegetariano", true);
+                break;
+            default:
+                aptitudes.put("aptoVegano", false);
+                aptitudes.put("aptoVegetariano", false);
+                break;
+        }
+
+        return aptitudes;
+    }
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnModificarActionPerformed
+        String id = txtIDModificar.getText();
+        String nombre = txtNombreModificar.getText();
+        String precio = txtPrecioModificar.getText();
+        String caloriasTamano = txtCaTmModificar.getText();
+        String pesoVolumen = txtPeVoModificar.getText();
+        Boolean aptoCeliaco = jRadioButtonSIModificar.isSelected();
+        String categoria = (String) jComboBoxCategoriaModificar.getSelectedItem();
+        String descripcion = jTextAreaModificar.getText();
+        String graduacionAlcoholica = jSpinnerGraduacionAlcoholicaModificar.getValue().toString();
 
+        Vendedor vendedor = itemMenuController.obtenerVendedor(vendedorDto.getIdText());
+
+        switch (tipoCategoria) {
+            case "Plato":
+                Map<String, Boolean> aptitudes = setearAptoAlimentacion(categoria);
+                boolean aptoVegano = aptitudes.get("aptoVegano");
+                boolean aptoVegetariano = aptitudes.get("aptoVegetariano");
+                PlatoDto platoDto = new PlatoDto(id, nombre, descripcion, precio, categoria, vendedor, caloriasTamano,
+                        aptoCeliaco, aptoVegetariano, aptoVegano, pesoVolumen);
+                itemMenuController.modificarItemMenu(platoDto, tipoCategoria);
+                List<Plato> platos = itemMenuController.obtenerPlatoPorIdVendedor(vendedorDto);
+                mostrarItemMenuEnPantalla(platos);
+                break;
+            case "Bebida":
+
+                BebidaDto bebidaDto = new BebidaDto(id, nombre, descripcion, precio, categoria, vendedor,
+                        graduacionAlcoholica, caloriasTamano, pesoVolumen);
+                itemMenuController.modificarItemMenu(bebidaDto, tipoCategoria);
+                List<Bebida> bebidas = itemMenuController.obtenerBebidaPorIdVendedor(vendedorDto);
+                mostrarItemMenuEnPantalla(bebidas);
+                break;
+        }
+        vaciarFormModificar();
     }// GEN-LAST:event_btnModificarActionPerformed
 
     private void jPanelModificarPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_jPanelModificarPropertyChange
-        // TODO add your handling code here:
+        txtIDModificar.setEnabled(false);
     }// GEN-LAST:event_jPanelModificarPropertyChange
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        String idText = txtIDEliminar.getText();
+        itemMenuController.eliminarItemMenu(idText, tipoCategoria);
+        switch (tipoCategoria) {
+            case "Plato":
+                List<Plato> platos = itemMenuController.obtenerPlatoPorIdVendedor(vendedorDto);
+                mostrarItemMenuEnPantalla(platos);
+                break;
+            case "Bebida":
+                List<Bebida> bebidas = itemMenuController.obtenerBebidaPorIdVendedor(vendedorDto);
+                mostrarItemMenuEnPantalla(bebidas);
+                break;
+        }
+        vaciarFormEliminar();
     }// GEN-LAST:event_btnEliminarActionPerformed
 
     private void jPanelEliminarFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_jPanelEliminarFocusGained
@@ -1042,19 +1156,58 @@ public class JplItemMenu extends javax.swing.JPanel {
     }// GEN-LAST:event_jPanelEliminarMouseClicked
 
     private void jPanelEliminarPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_jPanelEliminarPropertyChange
-        // TODO add your handling code here:
+        txtNombreEliminar.setEnabled(false);
+        txtPrecioEliminar.setEnabled(false);
+        txtCaTmEliminar.setEnabled(false);
+        txtPeVoEliminar.setEnabled(false);
+        txtCaTmEliminar.setEnabled(false);
+        jRadioButtonSIEliminar.setEnabled(false);
+        jComboBoxCategoriaEliminar.setEnabled(false);
+        jTextAreaEliminar.setEnabled(false);
+        jSpinnerGraduacionAlcoholicaEliminar.setEnabled(false);
     }// GEN-LAST:event_jPanelEliminarPropertyChange
 
     private void btnLimpiarBuscarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLimpiarBuscarActionPerformed
-        // TODO add your handling code here:
+        vaciarFormBuscar();
     }// GEN-LAST:event_btnLimpiarBuscarActionPerformed
+
+    private void vaciarFormBuscar() {
+        txtNombreBuscar.setText("");
+        txtNombreBuscar.setText("");
+    }
 
     private void txtIdBuscarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtIdBuscarActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_txtIdBuscarActionPerformed
 
     private void txtIdBuscarKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtIdBuscarKeyReleased
-        // TODO add your handling code here:
+        String idText = txtIdBuscar.getText().trim();
+        List<ItemMenu> items = new ArrayList<>();
+        switch (tipoCategoria) {
+            case "Plato":
+                if (!idText.isEmpty()) {
+                    ItemMenu item = itemMenuController.obtenerItemPorId(idText);
+                    items.add(item);
+                    txtNombreBuscar.setEnabled(false);
+                } else {
+                    List<Plato> platos = itemMenuController.obtenerPlatoPorIdVendedor(vendedorDto);
+                    items.addAll(platos);
+                    txtNombreBuscar.setEnabled(true);
+                }
+                break;
+            case "Bebida":
+                if (!idText.isEmpty()) {
+                    ItemMenu item = itemMenuController.obtenerItemPorId(idText);
+                    items.add(item);
+                    txtNombreBuscar.setEnabled(false);
+                } else {
+                    List<Bebida> bebidas = itemMenuController.obtenerBebidaPorIdVendedor(vendedorDto);
+                    items.addAll(bebidas);
+                    txtNombreBuscar.setEnabled(true);
+                }
+                break;
+        }
+        mostrarItemMenuEnPantalla(items);
     }// GEN-LAST:event_txtIdBuscarKeyReleased
 
     private void txtNombreBuscarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNombreBuscarActionPerformed
@@ -1062,7 +1215,27 @@ public class JplItemMenu extends javax.swing.JPanel {
     }// GEN-LAST:event_txtNombreBuscarActionPerformed
 
     private void txtNombreBuscarKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtNombreBuscarKeyReleased
-        // TODO add your handling code here:
+        String nombre = txtNombreBuscar.getText().trim();
+        List<ItemMenu> items = new ArrayList<>();
+        switch (tipoCategoria) {
+            case "Plato":
+                if (!nombre.isEmpty()) {
+                    items = itemMenuController.buscarItemPorNombre(nombre);
+                } else {
+                    List<Plato> platos = itemMenuController.obtenerPlatoPorIdVendedor(vendedorDto);
+                    items.addAll(platos);
+                }
+                break;
+            case "Bebida":
+                if (!nombre.isEmpty()) {
+                    items = itemMenuController.buscarItemPorNombre(nombre);
+                } else {
+                    List<Bebida> bebidas = itemMenuController.obtenerBebidaPorIdVendedor(vendedorDto);
+                    items.addAll(bebidas);
+                }
+                break;
+        }
+        mostrarItemMenuEnPantalla(items);
     }// GEN-LAST:event_txtNombreBuscarKeyReleased
 
     private void jPanelBuscarPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_jPanelBuscarPropertyChange
@@ -1162,7 +1335,8 @@ public class JplItemMenu extends javax.swing.JPanel {
         actualizarTituloBorde(txtPeVoEliminar, VOLUMEN);
         actualizarTituloBorde(txtPeVoModificar, VOLUMEN);
 
-        configurarGraduacionAlcoholicaSpinner(jRadioButtonSI, jRadioButtonNO, jLabelAcGa, jSpinnerGraduacionAlcoholica);
+        configurarGraduacionAlcoholicaSpinner(jRadioButtonSI, jRadioButtonNO, jLabelAcGa,
+                jSpinnerGraduacionAlcoholicaAgregar);
         configurarGraduacionAlcoholicaSpinner(jRadioButtonSIEliminar, jRadioButtonNOEliminar, jLabelAcGaEliminar,
                 jSpinnerGraduacionAlcoholicaEliminar);
         configurarGraduacionAlcoholicaSpinner(jRadioButtonSIModificar, jRadioButtonNOModificar, jLabelAcGaModificar,
@@ -1199,7 +1373,8 @@ public class JplItemMenu extends javax.swing.JPanel {
         actualizarTituloBorde(txtPeVoEliminar, PESO);
         actualizarTituloBorde(txtPeVoModificar, PESO);
 
-        configurarAptoCeliacoButtonGroup(jRadioButtonSI, jRadioButtonNO, jLabelAcGa, jSpinnerGraduacionAlcoholica);
+        configurarAptoCeliacoButtonGroup(jRadioButtonSI, jRadioButtonNO, jLabelAcGa,
+                jSpinnerGraduacionAlcoholicaAgregar);
         configurarAptoCeliacoButtonGroup(jRadioButtonSIEliminar, jRadioButtonNOEliminar, jLabelAcGaEliminar,
                 jSpinnerGraduacionAlcoholicaEliminar);
         configurarAptoCeliacoButtonGroup(jRadioButtonSIModificar, jRadioButtonNOModificar, jLabelAcGaModificar,
@@ -1262,7 +1437,7 @@ public class JplItemMenu extends javax.swing.JPanel {
 
         model = new DefaultTableModel(null, titulo);
 
-        if (listaItemMenu.isEmpty()) {
+        if (listaItemMenu.isEmpty() || listaItemMenu.get(0) == null) {
             // Tabla vacía
             tbItemMenuDatos.setModel(model);
         } else {
@@ -1291,9 +1466,9 @@ public class JplItemMenu extends javax.swing.JPanel {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiarAgregar;
-    private javax.swing.JButton btnLimpiarAgregar1;
-    private javax.swing.JButton btnLimpiarAgregar2;
     private javax.swing.JButton btnLimpiarBuscar;
+    private javax.swing.JButton btnLimpiarEliminar;
+    private javax.swing.JButton btnLimpiarModificar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnVerDetalles;
     private javax.swing.JButton btnVolver;
@@ -1339,7 +1514,7 @@ public class JplItemMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSpinner jSpinnerGraduacionAlcoholica;
+    private javax.swing.JSpinner jSpinnerGraduacionAlcoholicaAgregar;
     private javax.swing.JSpinner jSpinnerGraduacionAlcoholicaEliminar;
     private javax.swing.JSpinner jSpinnerGraduacionAlcoholicaModificar;
     private javax.swing.JTabbedPane jTabbedPaneCRUD;

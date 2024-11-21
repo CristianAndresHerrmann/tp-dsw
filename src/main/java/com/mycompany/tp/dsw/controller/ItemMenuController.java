@@ -50,6 +50,33 @@ public class ItemMenuController {
         }
     }
 
+    public void eliminarItemMenu(String idText, String tipoCategoria) {
+        Integer id = Integer.parseInt(idText);
+        switch (tipoCategoria) {
+            case "Plato":
+                platoMemory.eliminarItemMenu(id);
+                break;
+            case "Bebida":
+                bebidaMemory.eliminarItemMenu(id);
+                break;
+        }
+    }
+
+    public void modificarItemMenu(ItemMenuDto item, String tipoCategoria) {
+        switch (tipoCategoria) {
+            case "Plato":
+                PlatoDto platoDto = (PlatoDto) item;
+                platoMemory.modificarPlato(platoDto);
+                break;
+            case "Bebida":
+                BebidaDto bebidaDto = (BebidaDto) item;
+                bebidaMemory.modificarBebida(bebidaDto);
+                break;
+            default:
+                break;
+        }
+    }
+
     public Vendedor obtenerVendedor(String idText) {
         Integer id = Integer.parseInt(idText);
         return vendedorMemory.buscarVendedorPorId(id);
@@ -77,10 +104,15 @@ public class ItemMenuController {
         Integer id = Integer.parseInt(vendedorDto.getIdText());
         return bebidaMemory.obtenerBebidaPorIdVendedor(id);
     }
-    
-    public ItemMenu obtenerItemPorId(String idText){
+
+    public ItemMenu obtenerItemPorId(String idText) {
         Integer id = Integer.parseInt(idText);
         return platoMemory.filtrarPorId(id);
     }
-    
+
+    public List<ItemMenu> buscarItemPorNombre(String nombre) {
+        List<ItemMenu> items = platoMemory.buscarItemMenuPorNombre(nombre);
+        return items;
+    }
+
 }

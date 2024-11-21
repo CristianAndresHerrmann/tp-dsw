@@ -28,6 +28,10 @@ public class Cliente implements Observer<Pedido> {
     private Boolean activo = true;
     private LocalDateTime fechaEliminacion = null;
 
+    public Cliente() {
+
+    }
+
     public Cliente(ClienteDto clienteDto) {
         this.id = clienteDto.getId();
         this.nombre = clienteDto.getNombre();

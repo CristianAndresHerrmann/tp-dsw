@@ -181,8 +181,4 @@ public class Plato extends ItemMenu {
                 + this.getVendedor().getId() + "]";
     }
 
-    public Boolean getAptoVegano() {
-        return aptoVegano;
-    }
-
 }

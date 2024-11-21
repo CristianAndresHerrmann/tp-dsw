@@ -18,6 +18,7 @@ public abstract class ItemMenu { // Items que hay en un restaurante/vendedor
     private BigDecimal precio;
     private Categoria categoria;
     private Vendedor vendedor;
+    private Integer stock;
 
     private Boolean activo = true;
     private LocalDateTime fechaEliminacion = null;
@@ -110,6 +111,14 @@ public abstract class ItemMenu { // Items que hay en un restaurante/vendedor
 
     public void setFechaEliminacion(LocalDateTime fechaEliminacion) {
         this.fechaEliminacion = fechaEliminacion;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
 }

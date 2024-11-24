@@ -69,8 +69,14 @@ public class PedidoController {
         }).collect(Collectors.toList()); // Usamos collect para recolectar los resultados en una lista
     }
 
-    public List<Pedido> obtenerPedidosPorCliente(String idCliente) throws ClienteNoEncontradoException{
+    public List<Pedido> obtenerPedidosPorCliente(String idCliente) throws ClienteNoEncontradoException {
         Integer id = Integer.parseInt(idCliente);
         return pedidoMemory.filtrarPedidosPorCliente(id);
+    }
+
+    public Pedido obtenerPedidoPorId(String idPedido) {
+        Integer id = Integer.parseInt(idPedido);
+
+        return pedidoMemory.buscarPedidoPorId(id);
     }
 }

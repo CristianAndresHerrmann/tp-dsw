@@ -1,5 +1,5 @@
 package com.mycompany.tp.dsw.patronObserver;
 
 public interface Observer<T> {
-    public void updateEstado(T pedido);
+    public void evento(T pedido);
 }

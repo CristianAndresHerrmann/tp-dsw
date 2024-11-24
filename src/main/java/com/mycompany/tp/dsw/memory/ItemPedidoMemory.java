@@ -8,9 +8,14 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.mycompany.tp.dsw.dao.ItemsPedidoDao;
+import com.mycompany.tp.dsw.dto.ItemPedidoDto;
 import com.mycompany.tp.dsw.exception.ItemNoEncontradoException;
+import com.mycompany.tp.dsw.exception.PedidoNoEncontradoException;
 import com.mycompany.tp.dsw.exception.VendedorNoEncontradoException;
+import com.mycompany.tp.dsw.model.ItemMenu;
 import com.mycompany.tp.dsw.model.ItemPedido;
+import com.mycompany.tp.dsw.model.Pedido;
+import com.mycompany.tp.dsw.service.MemoryManager;
 
 /**
  *
@@ -18,9 +23,15 @@ import com.mycompany.tp.dsw.model.ItemPedido;
  */
 public class ItemPedidoMemory {
     private ItemsPedidoDao itemPedidoDao;
+    private MemoryManager memoryManager;
+    private ItemMenuMemory itemMenuMemory;
+    private PedidoMemory pedidoMemory;
 
     public ItemPedidoMemory() {
         itemPedidoDao = new ItemsPedidoDao();
+        memoryManager = MemoryManager.getInstance();
+        itemMenuMemory = memoryManager.getItemMenuMemory();
+        pedidoMemory = memoryManager.getPedidoMemory();
     }
 
     /**
@@ -98,10 +109,19 @@ public class ItemPedidoMemory {
      * - Manejo de id unicos con currentID
      * 
      * @param itemPedido El item pedido a persistir
+     * @throws PedidoNoEncontradoException
      */
 
-    public void registrarItemPedido(ItemPedido itemPedido) {
-        itemPedidoDao.add(itemPedido);
+    public ItemPedido registrarItemPedido(ItemPedidoDto itemPedidoDto) {
+        ItemPedido itemPedido = parseItemPedido(itemPedidoDto);
+        return itemPedidoDao.add(itemPedido);
+    }
+
+    private ItemPedido parseItemPedido(ItemPedidoDto itemPedidoDto) {
+        ItemMenu itemMenu = itemMenuMemory.buscarItemMenuPorNombre(itemPedidoDto.getItemMenuText()).get(0);
+        itemPedidoDto.setItemMenu(itemMenu);
+        ItemPedido itemPedido =  new ItemPedido(itemPedidoDto);
+        return itemPedido;
     }
 
 }

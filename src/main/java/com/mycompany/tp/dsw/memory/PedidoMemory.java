@@ -3,17 +3,24 @@ package com.mycompany.tp.dsw.memory;
 import java.util.List;
 
 import com.mycompany.tp.dsw.dao.PedidoDao;
+import com.mycompany.tp.dsw.dto.PedidoDto;
 import com.mycompany.tp.dsw.exception.ClienteNoEncontradoException;
 import com.mycompany.tp.dsw.exception.PedidoNoEncontradoException;
+import com.mycompany.tp.dsw.model.Cliente;
 import com.mycompany.tp.dsw.model.Estado;
 import com.mycompany.tp.dsw.model.Pedido;
+import com.mycompany.tp.dsw.service.MemoryManager;
 
 public class PedidoMemory {
 
     private PedidoDao pedidoDao;
+    private MemoryManager memoryManager;
+    private ClienteMemory clienteMemory;
 
     public PedidoMemory() {
         pedidoDao = new PedidoDao();
+        memoryManager = MemoryManager.getInstance();
+        clienteMemory = memoryManager.getClienteMemory();
     }
 
     /**
@@ -22,8 +29,9 @@ public class PedidoMemory {
      * 
      * @param pedido El pedido a persistir
      */
-    public void registrarPedido(Pedido pedido) {
-        pedidoDao.add(pedido);
+    public Pedido registrarPedido(PedidoDto pedidoDto) {
+        Pedido pedido = parsePedido(pedidoDto);
+        return pedidoDao.add(pedido);
     }
 
     /**
@@ -91,7 +99,7 @@ public class PedidoMemory {
      * @throws PedidoNoEncontradoException Si no encuentra el pedido
      */
 
-    public Pedido buscarPedidoPorId(Integer id) throws PedidoNoEncontradoException {
+    public Pedido buscarPedidoPorId(Integer id) {
         return pedidoDao.findById(id);
     }
 
@@ -105,5 +113,13 @@ public class PedidoMemory {
 
     public List<Pedido> buscarPedidoPorVendedor(Integer idVendedor) {
         return pedidoDao.findByVendedor(idVendedor);
+    }
+
+    private Pedido parsePedido(PedidoDto pedidoDto) {
+
+        Integer idCliente = Integer.parseInt(pedidoDto.getIdCliente());
+        Cliente cliente = clienteMemory.buscarClientePorId(idCliente);
+
+        return new Pedido(cliente);
     }
 }

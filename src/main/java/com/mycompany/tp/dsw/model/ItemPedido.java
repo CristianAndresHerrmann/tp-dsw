@@ -4,6 +4,8 @@
  */
 package com.mycompany.tp.dsw.model;
 
+import com.mycompany.tp.dsw.dto.ItemPedidoDto;
+
 /**
  *
  * @author User
@@ -20,6 +22,11 @@ public class ItemPedido { // Item pedido por un cliente, dentro de pedido class
         this.cantidad = cantidad;
         this.itemMenu = itemMenu;
         this.pedido = pedido;
+    }
+
+    public ItemPedido(ItemPedidoDto itemPedidoDto) {
+        this.cantidad = itemPedidoDto.getCantidad();
+        this.itemMenu = itemPedidoDto.getItemMenu();
     }
 
     public Integer getId() {
@@ -50,12 +57,13 @@ public class ItemPedido { // Item pedido por un cliente, dentro de pedido class
         return pedido;
     }
 
-    public void setPedido(Pedido pedido) {
+    public final void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Item: " + itemMenu.getNombre() + " precio: " + itemMenu.getPrecio() + " cantidad: " + cantidad;
-    }
+    }*/
+
 }

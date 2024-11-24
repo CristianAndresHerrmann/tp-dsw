@@ -6,7 +6,6 @@ package com.mycompany.tp.dsw.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.mycompany.tp.dsw.dto.ClienteDto;
 import com.mycompany.tp.dsw.patronObserver.Observer;
@@ -24,9 +23,9 @@ public class Cliente implements Observer<Pedido> {
     private String email;
     private Coordenada coordenada;
 
-    private LocalDateTime fechaRegistro = LocalDateTime.now();
+    private LocalDate fechaRegistro = LocalDate.now();
     private Boolean activo = true;
-    private LocalDateTime fechaEliminacion = null;
+    private LocalDate fechaEliminacion = null;
 
     public Cliente() {
 
@@ -50,7 +49,7 @@ public class Cliente implements Observer<Pedido> {
         this.coordenada = coordenada;
     }
 
-    public LocalDateTime getFechaRegistro() {
+    public LocalDate getFechaRegistro() {
         return fechaRegistro;
     }
 
@@ -58,7 +57,7 @@ public class Cliente implements Observer<Pedido> {
         return activo;
     }
 
-    public LocalDateTime getFechaEliminacion() {
+    public LocalDate getFechaEliminacion() {
         return fechaEliminacion;
     }
 
@@ -119,7 +118,7 @@ public class Cliente implements Observer<Pedido> {
      */
 
     @Override
-    public void updateEstado(Pedido pedido) {
+    public void evento(Pedido pedido) {
 
         System.out.println("Se le notifica a " + nombre + ": El estado de su pedido (ID: " + pedido.getId()
                 + ") ha cambiado a " + pedido.getEstado());

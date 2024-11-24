@@ -35,24 +35,86 @@ public class ItemMenuDao {
 
     public static void valoresInciales() {
         Vendedor vendedor = vendedorMemory.buscarVendedorPorId(101);
-        Plato platoEjemplo = new Plato(
-                "Milanesa con Papas Fritas",
-                850.0,
+
+        Plato plato1 = new Plato(
+                "Pizza Margarita",
+                1000.0,
                 true,
+                false,
                 true,
-                true,
-                500.0,
+                700.0,
                 101,
-                new BigDecimal("12.50"),
-                "Clásico plato argentino",
+                new BigDecimal("15.00"),
+                "Pizza clásica con queso, tomate y albahaca",
                 categoriaMemory.obtenerCategoriaPorNombre("Comida Clasica"),
                 vendedor);
-        items.add(platoEjemplo);
 
-        // Actualizar la lista del vendedor
+        Plato plato2 = new Plato(
+                "Hamburguesa Vegana",
+                900.0,
+                true,
+                true,
+                true,
+                400.0,
+                101,
+                new BigDecimal("18.50"),
+                "Hamburguesa elaborada con ingredientes 100% veganos",
+                categoriaMemory.obtenerCategoriaPorNombre("Comida Vegana"),
+                vendedor);
+
+        Plato plato3 = new Plato(
+                "Ensalada César",
+                750.0,
+                false,
+                true,
+                true,
+                300.0,
+                101,
+                new BigDecimal("12.00"),
+                "Ensalada con lechuga, croutons y aderezo César",
+                categoriaMemory.obtenerCategoriaPorNombre("Comida Vegetariana"),
+                vendedor);
+
+        Plato plato4 = new Plato(
+                "Limonada Clásica",
+                500.0,
+                true,
+                false,
+                true,
+                250.0,
+                101,
+                new BigDecimal("8.50"),
+                "Refrescante bebida sin alcohol con limón",
+                categoriaMemory.obtenerCategoriaPorNombre("Comida Vegana"),
+                vendedor);
+
+        Plato plato5 = new Plato(
+                "Cerveza Artesanal",
+                1200.0,
+                true,
+                false,
+                false,
+                600.0,
+                101,
+                new BigDecimal("25.00"),
+                "Cerveza artesanal con notas de malta y lúpulo",
+                categoriaMemory.obtenerCategoriaPorNombre("Comida Vegana"),
+                vendedor);
+
+        // Agregar los ítems a la lista general
+        items.add(plato1);
+        items.add(plato2);
+        items.add(plato3);
+        items.add(plato4);
+        items.add(plato5);
+
+        // Actualizar la lista de ítems del vendedor
         List<ItemMenu> listaVendedor = vendedor.getItemsMenu();
-
-        listaVendedor.add(platoEjemplo);
+        listaVendedor.add(plato1);
+        listaVendedor.add(plato2);
+        listaVendedor.add(plato3);
+        listaVendedor.add(plato4);
+        listaVendedor.add(plato5);
         vendedor.setItemsMenu(listaVendedor);
 
     }

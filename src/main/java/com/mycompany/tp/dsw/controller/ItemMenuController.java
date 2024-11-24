@@ -104,6 +104,14 @@ public class ItemMenuController {
         Integer id = Integer.parseInt(vendedorDto.getIdText());
         return bebidaMemory.obtenerBebidaPorIdVendedor(id);
     }
+    
+    public List<ItemMenu> obtenerItemMenuPorIdVendedor(Integer id){
+        List<ItemMenu> retItems = new ArrayList<>();
+        retItems.addAll(platoMemory.obtenerPlatoPorIdVendedor(id));
+        retItems.addAll(bebidaMemory.obtenerBebidaPorIdVendedor(id));
+        
+        return retItems;
+    }
 
     public ItemMenu obtenerItemPorId(String idText) {
         Integer id = Integer.parseInt(idText);

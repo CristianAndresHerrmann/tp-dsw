@@ -15,6 +15,10 @@ import javax.swing.table.TableColumn;
 import com.mycompany.tp.dsw.controller.ClienteController;
 import com.mycompany.tp.dsw.dto.ClienteDto;
 import com.mycompany.tp.dsw.model.Cliente;
+import com.mycompany.tp.dsw.vista.cliente.FrmRealizarPedido;
+import com.mycompany.tp.dsw.vista.cliente.FrmVerPedidos;
+import com.mycompany.tp.dsw.vista.util.HeaderFormatter;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -30,6 +34,15 @@ public class JplCliente extends javax.swing.JPanel {
         this.parentFrame = parentFrame;
         clienteController = new ClienteController();
         mostrarTabla(clienteController.obtenerTodosLosClientes());
+        poputTable();
+    }
+
+    public void poputTable() {
+        jPopupMenu.add(jmiCargarDatos);
+        jPopupMenu.add(jmiVerDetallesCliente);
+        jPopupMenu.add(jmiVerPedidos);
+        jPopupMenu.add(jmiRealizarPedido);
+        tbClientesDatos.setComponentPopupMenu(jPopupMenu);
     }
 
     /**
@@ -42,10 +55,17 @@ public class JplCliente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         txtNombreBuscar2 = new javax.swing.JTextField();
+        jPopupMenu = new javax.swing.JPopupMenu();
+        jmiCargarDatos = new javax.swing.JMenuItem();
+        jmiRealizarPedido = new javax.swing.JMenuItem();
+        jmiVerDetallesCliente = new javax.swing.JMenuItem();
+        jmiVerPedidos = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane = new javax.swing.JTabbedPane();
         jPanelAgregar = new javax.swing.JPanel();
@@ -84,9 +104,6 @@ public class JplCliente extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbClientesDatos = new javax.swing.JTable();
-        btnPedidos = new javax.swing.JButton();
-        btnVerDetalles = new javax.swing.JButton();
-        btnCargarDatos = new javax.swing.JButton();
 
         txtNombreBuscar2.setForeground(new java.awt.Color(51, 51, 51));
         txtNombreBuscar2.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre"));
@@ -100,6 +117,29 @@ public class JplCliente extends javax.swing.JPanel {
         txtNombreBuscar2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNombreBuscar2KeyReleased(evt);
+            }
+        });
+
+        jmiCargarDatos.setText("Cargar Datos");
+        jmiCargarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCargarDatosActionPerformed(evt);
+            }
+        });
+
+        jmiRealizarPedido.setText("Realizar Pedido");
+        jmiRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiRealizarPedidoActionPerformed(evt);
+            }
+        });
+
+        jmiVerDetallesCliente.setText("Ver Detalles Cliente");
+
+        jmiVerPedidos.setText("Ver Pedidos");
+        jmiVerPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiVerPedidosActionPerformed(evt);
             }
         });
 
@@ -452,25 +492,12 @@ public class JplCliente extends javax.swing.JPanel {
                 new String[] {
 
                 }));
-        tbClientesDatos.setShowGrid(false);
+        tbClientesDatos.setRowHeight(25);
+        tbClientesDatos.setShowGrid(true);
         tbClientesDatos.getTableHeader().setResizingAllowed(false);
         tbClientesDatos.getTableHeader().setReorderingAllowed(false);
 
         jScrollPane1.setViewportView(tbClientesDatos);
-
-        btnPedidos.setText("Pedidos");
-        btnPedidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPedidosActionPerformed(evt);
-            }
-        });
-
-        btnVerDetalles.setText("Detalles");
-        btnVerDetalles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerDetallesActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -478,39 +505,72 @@ public class JplCliente extends javax.swing.JPanel {
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel5Layout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(btnPedidos)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnVerDetalles))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(9, Short.MAX_VALUE)));
         jPanel5Layout.setVerticalGroup(
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnVerDetalles)
-                                        .addComponent(btnPedidos))
-                                .addGap(0, 13, Short.MAX_VALUE)));
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                                .addContainerGap()));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 570, 260));
-
-        btnCargarDatos.setText("CargarDatos");
-        btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarDatosActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 570, 370));
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmiVerPedidosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiVerPedidosActionPerformed
+        int selectedRow = tbClientesDatos.getSelectedRow();
+
+        if (selectedRow != -1) {
+            String idCliente = tbClientesDatos.getValueAt(selectedRow, 0).toString();
+            FrmVerPedidos verPedidosForm = new FrmVerPedidos(idCliente);
+            verPedidosForm.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente");
+        }
+    }// GEN-LAST:event_jmiVerPedidosActionPerformed
+
+    private void jmiCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiCargarDatosActionPerformed
+        int selectedRow = tbClientesDatos.getSelectedRow();
+        String id = tbClientesDatos.getValueAt(selectedRow, 0).toString();
+        Cliente selectedCliente = clienteController.buscarClientePorId(id);
+        if (selectedCliente != null) {
+            if (jTabbedPane.getSelectedIndex() == 1) { // Modificar
+                txtIDModificar.setText(selectedCliente.getId().toString());
+                txtNombreModificar.setText(selectedCliente.getNombre());
+                txtCuitModificar.setText(selectedCliente.getCuit());
+                txtDireccionModificar.setText(selectedCliente.getDireccion());
+                txtEmailModificar.setText(selectedCliente.getEmail());
+                txtLatitudModificar.setText(selectedCliente.getCoordenada().getLatitud().toString());
+                txtLongitudModificar.setText(selectedCliente.getCoordenada().getLongitud().toString());
+            }
+
+            if (jTabbedPane.getSelectedIndex() == 2) { // Eliminar
+                txtIDEliminar.setText(selectedCliente.getId().toString());
+                txtNombreEliminar.setText(selectedCliente.getNombre());
+                txtCuitEliminar.setText(selectedCliente.getCuit());
+                txtDireccionEliminar.setText(selectedCliente.getDireccion());
+                txtEmailEliminar.setText(selectedCliente.getEmail());
+                txtLatitudEliminar.setText(selectedCliente.getCoordenada().getLatitud().toString());
+                txtLongitudEliminar.setText(selectedCliente.getCoordenada().getLongitud().toString());
+            }
+        }
+    }// GEN-LAST:event_jmiCargarDatosActionPerformed
+
+    private void jmiRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiRealizarPedidoActionPerformed
+        int selectedRow = tbClientesDatos.getSelectedRow();
+
+        if (selectedRow != -1) {
+            String idCliente = tbClientesDatos.getValueAt(selectedRow, 0).toString();
+            FrmRealizarPedido realizarPedidoFrom = new FrmRealizarPedido(idCliente);
+            realizarPedidoFrom.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente");
+        }
+
+    }// GEN-LAST:event_jmiRealizarPedidoActionPerformed
 
     private void txtNombreBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNombreBuscar2ActionPerformed
         // TODO add your handling code here:
@@ -523,12 +583,12 @@ public class JplCliente extends javax.swing.JPanel {
     private void txtIDBuscarKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtIDBuscarKeyReleased
         String idText = txtIDBuscar.getText();
         List<Cliente> clientes = new ArrayList<>();
-        
-        if (!idText.isEmpty()){
+
+        if (!idText.isEmpty()) {
             Cliente cliente = clienteController.buscarClientePorId(idText);
             clientes.add(cliente);
             txtNombreBuscar.setEnabled(false);
-        }  else {
+        } else {
             clientes = clienteController.obtenerTodosLosClientes();
             txtNombreBuscar.setEnabled(true);
         }
@@ -728,70 +788,32 @@ public class JplCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }// GEN-LAST:event_jPanelBuscarPropertyChange
 
-    private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnPedidosActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnPedidosActionPerformed
-
-    private void btnVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnVerDetallesActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnVerDetallesActionPerformed
-
-    private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCargarDatosActionPerformed
-        int selectedRow = tbClientesDatos.getSelectedRow();
-
-        if (selectedRow != -1) {
-            String id = tbClientesDatos.getValueAt(selectedRow, 0).toString();
-            Cliente selectedCliente = clienteController.buscarClientePorId(id);
-            if (selectedCliente != null) {
-                if (jTabbedPane.getSelectedIndex() == 1) { // Modificar
-                    txtIDModificar.setText(selectedCliente.getId().toString());
-                    txtNombreModificar.setText(selectedCliente.getNombre());
-                    txtCuitModificar.setText(selectedCliente.getCuit());
-                    txtDireccionModificar.setText(selectedCliente.getDireccion());
-                    txtEmailModificar.setText(selectedCliente.getEmail());
-                    txtLatitudModificar.setText(selectedCliente.getCoordenada().getLatitud().toString());
-                    txtLongitudModificar.setText(selectedCliente.getCoordenada().getLongitud().toString());
-                }
-
-                if (jTabbedPane.getSelectedIndex() == 2) { // Eliminar
-                    txtIDEliminar.setText(selectedCliente.getId().toString());
-                    txtNombreEliminar.setText(selectedCliente.getNombre());
-                    txtCuitEliminar.setText(selectedCliente.getCuit());
-                    txtDireccionEliminar.setText(selectedCliente.getDireccion());
-                    txtEmailEliminar.setText(selectedCliente.getEmail());
-                    txtLatitudEliminar.setText(selectedCliente.getCoordenada().getLatitud().toString());
-                    txtLongitudEliminar.setText(selectedCliente.getCoordenada().getLongitud().toString());
-                }
-            }
-        }
-    }// GEN-LAST:event_btnCargarDatosActionPerformed
-
     public void mostrarTabla(List<Cliente> clientes) {
         DefaultTableModel model = new DefaultTableModel();
-        String[] titulo = { "ID", "NOMBRE", "DIRECCION", "CUIT", "EMAIL", "LATITUD", "LONGITUD", "FECHA REGISTRO" };
+        String[] titulo = { "ID", "NOMBRE", "DIRECCION", "CUIT", "FECHA REGISTRO" };
         model.setColumnIdentifiers(titulo); // Establece los títulos de las columnas
 
         if (clientes.isEmpty() || clientes.get(0) == null) {
             // Tabla vacía
             tbClientesDatos.setModel(model);
         } else {
-           for (Cliente cliente : clientes) {
-                Object[] fila = new Object[8];
+            for (Cliente cliente : clientes) {
+                Object[] fila = new Object[5];
                 fila[0] = cliente.getId();
                 fila[1] = cliente.getNombre();
                 fila[2] = cliente.getDireccion();
                 fila[3] = cliente.getCuit();
-                fila[4] = cliente.getEmail();
-                fila[5] = cliente.getCoordenada().getLatitud();
-                fila[6] = cliente.getCoordenada().getLongitud();
-                fila[7] = cliente.getFechaRegistro();
+                fila[4] = cliente.getFechaRegistro();
 
                 model.addRow(fila); // Añade la fila al modelo
-            } 
+            }
         }
-        
 
         tbClientesDatos.setModel(model); // Establece el modelo a la tabla
+
+        // Personalizar el encabezado
+        JTableHeader header = tbClientesDatos.getTableHeader();
+        header.setDefaultRenderer(new HeaderFormatter());
         ajustarAnchoColumnas(tbClientesDatos);
     }
 
@@ -808,7 +830,6 @@ public class JplCliente extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCargarDatos;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiarAgregar;
@@ -816,16 +837,19 @@ public class JplCliente extends javax.swing.JPanel {
     private javax.swing.JButton btnLimpiarEliminar;
     private javax.swing.JButton btnLimpiarModificar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnPedidos;
-    private javax.swing.JButton btnVerDetalles;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelAgregar;
     private javax.swing.JPanel jPanelBuscar;
     private javax.swing.JPanel jPanelEliminar;
     private javax.swing.JPanel jPanelModificar;
+    private javax.swing.JPopupMenu jPopupMenu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane;
+    private javax.swing.JMenuItem jmiCargarDatos;
+    private javax.swing.JMenuItem jmiRealizarPedido;
+    private javax.swing.JMenuItem jmiVerDetallesCliente;
+    private javax.swing.JMenuItem jmiVerPedidos;
     private javax.swing.JTable tbClientesDatos;
     private javax.swing.JTextField txtCuitAgregar;
     private javax.swing.JTextField txtCuitEliminar;

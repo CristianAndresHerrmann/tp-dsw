@@ -16,6 +16,8 @@ import javax.swing.table.TableColumn;
 import com.mycompany.tp.dsw.controller.VendedorController;
 import com.mycompany.tp.dsw.dto.VendedorDto;
 import com.mycompany.tp.dsw.model.Vendedor;
+import com.mycompany.tp.dsw.vista.util.HeaderFormatter;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -31,6 +33,15 @@ public class JplVendedor extends javax.swing.JPanel {
 
         vendedorController = new VendedorController();
         mostrarTabla(vendedorController.obtenerTodosLosVendedores());
+        poputTable();
+    }
+
+    public void poputTable() {
+        jPopupMenu.add(jmiCargarDatos);
+        jPopupMenu.add(jmiVerDetalles);
+        jPopupMenu.add(jmiVerPedidos);
+        jPopupMenu.add(jmiVerProductos);
+        tbVendedorDatos.setComponentPopupMenu(jPopupMenu);
     }
 
     /**
@@ -40,8 +51,15 @@ public class JplVendedor extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        jPopupMenu = new javax.swing.JPopupMenu();
+        jmiVerDetalles = new javax.swing.JMenuItem();
+        jmiVerPedidos = new javax.swing.JMenuItem();
+        jmiVerProductos = new javax.swing.JMenuItem();
+        jmiCargarDatos = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPaneCRUD = new javax.swing.JTabbedPane();
         jPanelAgregar = new javax.swing.JPanel();
@@ -74,9 +92,25 @@ public class JplVendedor extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbVendedorDatos = new javax.swing.JTable();
-        btnVerDetalles = new javax.swing.JButton();
-        btnProductos = new javax.swing.JButton();
-        btnCargarDatos = new javax.swing.JButton();
+
+        jmiVerDetalles.setText("Ver Detalles Vendedor");
+        jmiVerDetalles.getAccessibleContext().setAccessibleDescription("");
+
+        jmiVerPedidos.setText("Ver Pedidos");
+
+        jmiVerProductos.setText("Ver Productos");
+        jmiVerProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiVerProductosActionPerformed(evt);
+            }
+        });
+
+        jmiCargarDatos.setText("Cargar Datos");
+        jmiCargarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCargarDatosActionPerformed(evt);
+            }
+        });
 
         setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new java.awt.BorderLayout());
@@ -365,6 +399,8 @@ public class JplVendedor extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
+        tbVendedorDatos.setBackground(new java.awt.Color(255, 255, 255));
+        tbVendedorDatos.setForeground(new java.awt.Color(0, 0, 0));
         tbVendedorDatos.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][] {
                         {},
@@ -375,7 +411,9 @@ public class JplVendedor extends javax.swing.JPanel {
                 new String[] {
 
                 }));
-        tbVendedorDatos.setShowGrid(false);
+        tbVendedorDatos.setGridColor(new java.awt.Color(0, 0, 0));
+        tbVendedorDatos.setRowHeight(25);
+        tbVendedorDatos.setShowGrid(true);
         tbVendedorDatos.getTableHeader().setResizingAllowed(false);
         tbVendedorDatos.getTableHeader().setReorderingAllowed(false);
         tbVendedorDatos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -385,76 +423,64 @@ public class JplVendedor extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbVendedorDatos);
 
-        btnVerDetalles.setText("Detalles");
-        btnVerDetalles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerDetallesActionPerformed(evt);
-
-            }
-        });
-
-        btnProductos.setText("Productos");
-        btnProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProductosActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel5Layout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(btnProductos)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnVerDetalles))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         jPanel5Layout.setVerticalGroup(
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnVerDetalles)
-                                        .addComponent(btnProductos))
-                                .addGap(0, 9, Short.MAX_VALUE)));
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                                .addContainerGap()));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, 250));
-
-        btnCargarDatos.setText("CargarDatos");
-        btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarDatosActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, 370));
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnProductosActionPerformed
+    private void jmiVerProductosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiVerProductosActionPerformed
         int selectedRow = tbVendedorDatos.getSelectedRow();
-        if (selectedRow != -1) {
-            String id = tbVendedorDatos.getValueAt(selectedRow, 0).toString();
-            String nombre = tbVendedorDatos.getValueAt(selectedRow, 1).toString();
-            String direccion = tbVendedorDatos.getValueAt(selectedRow, 2).toString();
 
-            VendedorDto vendedorDto = new VendedorDto(id, nombre, direccion, null, null);
-            parentFrame.itemMenuPane.setTitulo(vendedorDto);
-            parentFrame.cambiarPanel(parentFrame.itemMenuPane);
-        } else {
-            JOptionPane.showMessageDialog(this, "Por favor seleccione un vendedor.");
+        String id = tbVendedorDatos.getValueAt(selectedRow, 0).toString();
+        String nombre = tbVendedorDatos.getValueAt(selectedRow, 1).toString();
+        String direccion = tbVendedorDatos.getValueAt(selectedRow, 2).toString();
+
+        VendedorDto vendedorDto = new VendedorDto(id, nombre, direccion, null, null);
+        parentFrame.itemMenuPane.setTitulo(vendedorDto);
+        parentFrame.cambiarPanel(parentFrame.itemMenuPane);
+    }// GEN-LAST:event_jmiVerProductosActionPerformed
+
+    private void jmiCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiCargarDatosActionPerformed
+        int selectedRow = tbVendedorDatos.getSelectedRow();
+        String id = tbVendedorDatos.getValueAt(selectedRow, 0).toString();
+        String nombre = tbVendedorDatos.getValueAt(selectedRow, 1).toString();
+        String direccion = tbVendedorDatos.getValueAt(selectedRow, 2).toString();
+        String latitud = tbVendedorDatos.getValueAt(selectedRow, 3).toString();
+        String longitud = tbVendedorDatos.getValueAt(selectedRow, 4).toString();
+        // Si esta seleccionado Modificar
+        if (jTabbedPaneCRUD.getSelectedIndex() == 1) {
+            txtIdModificar.setText(id);
+            txtNombreModificar.setText(nombre);
+            txtDireccionModificar.setText(direccion);
+            txtLatitudModificar.setText(latitud);
+            txtLongitudModificar.setText(longitud);
         }
 
-    }// GEN-LAST:event_btnProductosActionPerformed
+        // Si esta seleccionado Eliminar
+        if (jTabbedPaneCRUD.getSelectedIndex() == 2) {
+            txtIdEliminar.setText(id);
+            txtNombreEliminar.setText(nombre);
+            txtDireccionEliminar.setText(direccion);
+            txtLatitudEliminar.setText(latitud);
+            txtLongitudEliminar.setText(longitud);
+        }
+    }// GEN-LAST:event_jmiCargarDatosActionPerformed
 
     /////////////////////////////////////////////////////////////////////////////////
 
@@ -500,41 +526,6 @@ public class JplVendedor extends javax.swing.JPanel {
         mostrarTabla(listaVendedores);
 
     }// GEN-LAST:event_txtIdBuscarKeyReleased
-
-    private void btnVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnVerDetallesActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnVerDetallesActionPerformed
-
-    private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCargarDatosActionPerformed
-        int selectedRow = tbVendedorDatos.getSelectedRow();
-
-        // Verificar si hay una fila seleccionada
-        if (selectedRow != -1) {
-            String id = tbVendedorDatos.getValueAt(selectedRow, 0).toString();
-            String nombre = tbVendedorDatos.getValueAt(selectedRow, 1).toString();
-            String direccion = tbVendedorDatos.getValueAt(selectedRow, 2).toString();
-            String latitud = tbVendedorDatos.getValueAt(selectedRow, 3).toString();
-            String longitud = tbVendedorDatos.getValueAt(selectedRow, 4).toString();
-            // Si esta seleccionado Modificar
-            if (jTabbedPaneCRUD.getSelectedIndex() == 1) {
-                txtIdModificar.setText(id);
-                txtNombreModificar.setText(nombre);
-                txtDireccionModificar.setText(direccion);
-                txtLatitudModificar.setText(latitud);
-                txtLongitudModificar.setText(longitud);
-            }
-
-            // Si esta seleccionado Eliminar
-            if (jTabbedPaneCRUD.getSelectedIndex() == 2) {
-                txtIdEliminar.setText(id);
-                txtNombreEliminar.setText(nombre);
-                txtDireccionEliminar.setText(direccion);
-                txtLatitudEliminar.setText(latitud);
-                txtLongitudEliminar.setText(longitud);
-            }
-        }
-
-    }// GEN-LAST:event_btnCargarDatosActionPerformed
 
     private void txtNombreAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNombreAgregarActionPerformed
         // TODO add your handling code here:
@@ -709,23 +700,25 @@ public class JplVendedor extends javax.swing.JPanel {
 
     public void mostrarTabla(List<Vendedor> listaVendedores) {
         DefaultTableModel model = new DefaultTableModel();
-        String[] titulo = { "ID", "NOMBRE", "DIRECCION", "LATITUD", "LONGITUD", "FECHA REGISTRO" };
+        String[] titulo = { "ID", "NOMBRE", "DIRECCION", "FECHA REGISTRO" };
         model.setColumnIdentifiers(titulo); // Establece los títulos de las columnas
 
         // Llena el modelo con los vendedores encontrados
         for (Vendedor vendedor : listaVendedores) {
-            Object[] fila = new Object[8];
+            Object[] fila = new Object[4];
             fila[0] = vendedor.getId();
             fila[1] = vendedor.getNombre();
             fila[2] = vendedor.getDireccion();
-            fila[3] = vendedor.getCoordenada().getLatitud();
-            fila[4] = vendedor.getCoordenada().getLongitud();
-            fila[5] = vendedor.getFechaRegistro();
+            fila[3] = vendedor.getFechaRegistro();
 
             model.addRow(fila); // Añade la fila al modelo
         }
 
         tbVendedorDatos.setModel(model); // Establece el modelo a la tabla
+
+        // Personalizar el encabezado
+        JTableHeader header = tbVendedorDatos.getTableHeader();
+        header.setDefaultRenderer(new HeaderFormatter());
         ajustarAnchoColumnas(tbVendedorDatos);
     }
 
@@ -742,7 +735,6 @@ public class JplVendedor extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCargarDatos;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiarAgregar;
@@ -750,16 +742,19 @@ public class JplVendedor extends javax.swing.JPanel {
     private javax.swing.JButton btnLimpiarEliminar;
     private javax.swing.JButton btnLimpiarModificar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnProductos;
-    private javax.swing.JButton btnVerDetalles;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelAgregar;
     private javax.swing.JPanel jPanelBuscar;
     private javax.swing.JPanel jPanelEliminar;
     private javax.swing.JPanel jPanelModificar;
+    private javax.swing.JPopupMenu jPopupMenu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPaneCRUD;
+    private javax.swing.JMenuItem jmiCargarDatos;
+    private javax.swing.JMenuItem jmiVerDetalles;
+    private javax.swing.JMenuItem jmiVerPedidos;
+    private javax.swing.JMenuItem jmiVerProductos;
     private javax.swing.JTable tbVendedorDatos;
     private javax.swing.JTextField txtDireccionAgregar;
     private javax.swing.JTextField txtDireccionEliminar;

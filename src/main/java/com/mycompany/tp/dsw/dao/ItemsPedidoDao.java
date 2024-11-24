@@ -36,15 +36,6 @@ public class ItemsPedidoDao {
 
     }
 
-    // Ver con el FRM si es necesario
-    /*
-     * public ItemsPedidoDao(VendedorDao vendedorDao) {
-     * itemsPedido = new ArrayList<>();
-     * currentID = 0;
-     * this.vendedorDao = vendedorDao;
-     * }
-     */
-
     public List<ItemPedido> findByIdRestaurante(Integer id)
             throws ItemNoEncontradoException, VendedorNoEncontradoException {
         List<ItemPedido> result = new ArrayList<>();
@@ -124,8 +115,9 @@ public class ItemsPedidoDao {
         return itemsPedido;
     }
 
-    public void add(ItemPedido itemPedido) {
+    public ItemPedido add(ItemPedido itemPedido) {
         itemPedido.setId(currentID++);
         itemsPedido.add(itemPedido);
+        return itemPedido;
     }
 }

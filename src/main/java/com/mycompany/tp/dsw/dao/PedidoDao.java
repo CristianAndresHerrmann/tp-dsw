@@ -23,9 +23,10 @@ public class PedidoDao {
 
     }
 
-    public void add(Pedido pedido) {
+    public Pedido add(Pedido pedido) {
         pedido.setId(currentID++);
         pedidos.add(pedido);
+        return pedido;
     }
 
     public List<Pedido> findByCliente(Integer clienteId) throws ClienteNoEncontradoException {
@@ -68,11 +69,11 @@ public class PedidoDao {
         return pedidos;
     }
 
-    public Pedido findById(Integer id) throws PedidoNoEncontradoException {
+    public Pedido findById(Integer id) {
         return pedidos.stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new PedidoNoEncontradoException("No se ha encontrado pedido con ID: " + id));
+                .orElse(null);
     }
 
     public List<Pedido> findByVendedor(Integer idVendedor) {

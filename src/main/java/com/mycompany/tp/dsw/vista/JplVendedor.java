@@ -52,6 +52,7 @@ public class JplVendedor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -97,6 +98,11 @@ public class JplVendedor extends javax.swing.JPanel {
         jmiVerDetalles.getAccessibleContext().setAccessibleDescription("");
 
         jmiVerPedidos.setText("Ver Pedidos");
+        jmiVerPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiVerPedidosActionPerformed(evt);
+            }
+        });
 
         jmiVerProductos.setText("Ver Productos");
         jmiVerProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -444,16 +450,31 @@ public class JplVendedor extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jmiVerPedidosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiVerPedidosActionPerformed
+        int selectedRow = tbVendedorDatos.getSelectedRow();
+        if (selectedRow != -1) {
+            String id = tbVendedorDatos.getValueAt(selectedRow, 0).toString();
+            FrmVerPedidoVendedor verPedidoVendedorForm = new FrmVerPedidoVendedor(id);
+            verPedidoVendedorForm.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un Restaurante");
+        }
+    }// GEN-LAST:event_jmiVerPedidosActionPerformed
+
     private void jmiVerProductosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiVerProductosActionPerformed
         int selectedRow = tbVendedorDatos.getSelectedRow();
 
-        String id = tbVendedorDatos.getValueAt(selectedRow, 0).toString();
-        String nombre = tbVendedorDatos.getValueAt(selectedRow, 1).toString();
-        String direccion = tbVendedorDatos.getValueAt(selectedRow, 2).toString();
+        if (selectedRow != -1) {
+            String id = tbVendedorDatos.getValueAt(selectedRow, 0).toString();
+            String nombre = tbVendedorDatos.getValueAt(selectedRow, 1).toString();
+            String direccion = tbVendedorDatos.getValueAt(selectedRow, 2).toString();
 
-        VendedorDto vendedorDto = new VendedorDto(id, nombre, direccion, null, null);
-        parentFrame.itemMenuPane.setTitulo(vendedorDto);
-        parentFrame.cambiarPanel(parentFrame.itemMenuPane);
+            VendedorDto vendedorDto = new VendedorDto(id, nombre, direccion, null, null);
+            parentFrame.itemMenuPane.setTitulo(vendedorDto);
+            parentFrame.cambiarPanel(parentFrame.itemMenuPane);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un Restaurante");
+        }
     }// GEN-LAST:event_jmiVerProductosActionPerformed
 
     private void jmiCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiCargarDatosActionPerformed

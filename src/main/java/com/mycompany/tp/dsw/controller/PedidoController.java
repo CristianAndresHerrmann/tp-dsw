@@ -79,4 +79,9 @@ public class PedidoController {
 
         return pedidoMemory.buscarPedidoPorId(id);
     }
+
+    public List<Pedido> obtenerPedidoPorIdVendedor(String idVendedor) {
+        Integer id = Integer.parseInt(idVendedor);
+        return pedidoMemory.buscarPedidoPorVendedor(id);
+    }
 }

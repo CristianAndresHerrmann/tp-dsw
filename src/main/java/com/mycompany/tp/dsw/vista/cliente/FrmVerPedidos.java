@@ -68,7 +68,6 @@ public class FrmVerPedidos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         jPopupMenu = new javax.swing.JPopupMenu();
         jmiVerDetalles = new javax.swing.JMenuItem();
         jPanel4 = new javax.swing.JPanel();
@@ -78,7 +77,6 @@ public class FrmVerPedidos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbPedidos = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
-
         jmiVerDetalles.setText("Ver Detalles");
         jmiVerDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +177,7 @@ public class FrmVerPedidos extends javax.swing.JFrame {
 
     private void jmiVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jmiVerDetallesActionPerformed
         int selectedRow = tbPedidos.getSelectedRow();
-
+        
         if (selectedRow != -1) {
             String idPedido = tbPedidos.getValueAt(selectedRow, 0).toString();
             FrmVerDetallesPedido verDetallePedidoForm = new FrmVerDetallesPedido(idPedido);

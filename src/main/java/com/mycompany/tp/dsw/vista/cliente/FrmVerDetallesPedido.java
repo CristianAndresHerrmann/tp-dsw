@@ -4,6 +4,7 @@
  */
 package com.mycompany.tp.dsw.vista.cliente;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.swing.JTable;
@@ -12,9 +13,11 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
 import com.mycompany.tp.dsw.controller.PedidoController;
+import com.mycompany.tp.dsw.model.Estado;
 import com.mycompany.tp.dsw.model.ItemPedido;
 import com.mycompany.tp.dsw.model.Pedido;
 import com.mycompany.tp.dsw.vista.util.HeaderFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,19 +27,19 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
 
     private final String idPedido;
     PedidoController pedidoController;
+    private final Pedido pedido;
 
     public FrmVerDetallesPedido(String idPedido) {
         initComponents();
         pedidoController = new PedidoController();
         this.idPedido = idPedido;
+        pedido = pedidoController.obtenerPedidoPorId(idPedido);
         this.setLocationRelativeTo(null);
         setearTituloTabla();
         initDatos();
     }
 
     public void initDatos() {
-
-        Pedido pedido = pedidoController.obtenerPedidoPorId(idPedido);
         List<ItemPedido> itemsPedidos = pedido.getItems();
         mostrarTabla(itemsPedidos);
 
@@ -49,6 +52,7 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -59,10 +63,10 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDetallesPedido = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnPagarMercadoPago = new javax.swing.JButton();
+        btnPagarTransferencia = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setPreferredSize(new java.awt.Dimension(518, 260));
 
@@ -112,12 +116,22 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setText("Pagar \nMercado Pago");
-        jButton1.setPreferredSize(new java.awt.Dimension(30, 30));
+        btnPagarMercadoPago.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnPagarMercadoPago.setText("Pagar \nMercado Pago");
+        btnPagarMercadoPago.setPreferredSize(new java.awt.Dimension(30, 30));
+        btnPagarMercadoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarMercadoPagoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton2.setText("Pagar Transferencia");
+        btnPagarTransferencia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnPagarTransferencia.setText("Pagar Transferencia");
+        btnPagarTransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarTransferenciaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -125,14 +139,14 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btnCancelar)
-                        .addGap(206, 206, 206)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPagarTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnPagarMercadoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -149,8 +163,8 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPagarMercadoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPagarTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar))
                 .addGap(12, 12, 12))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,8 +181,24 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPagarTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarTransferenciaActionPerformed
+        if (pedido.getEstado().equals(Estado.ACEPTADO)){
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Espere que su pedido sea aceptado por el restaurante");
+        }
+    }//GEN-LAST:event_btnPagarTransferenciaActionPerformed
+
+    private void btnPagarMercadoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarMercadoPagoActionPerformed
+        if (pedido.getEstado().equals(Estado.ACEPTADO)){
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Espere que su pedido sea aceptado por el restaurante");
+        }
+    }//GEN-LAST:event_btnPagarMercadoPagoActionPerformed
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }// GEN-LAST:event_btnCancelarActionPerformed
 
     public void setearTituloTabla() {
@@ -190,15 +220,28 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) tbDetallesPedido.getModel(); // Recupera el modelo
 
+        // Limpiar filas existentes
+        model.setRowCount(0);
+
+        BigDecimal total = BigDecimal.ZERO;
         if (itemsPedidos != null && !itemsPedidos.isEmpty()) {
             for (ItemPedido item : itemsPedidos) {
                 Object[] fila = new Object[3];
+                BigDecimal precio = item.getItemMenu().getPrecio();
+                Integer cantidad = item.getCantidad();
                 fila[0] = item.getItemMenu().getNombre();
-                fila[1] = item.getItemMenu().getPrecio();
-                fila[2] = item.getCantidad();
+                fila[1] = precio;
+                fila[2] = cantidad;
                 model.addRow(fila);
+
+                total = total.add(precio.multiply(BigDecimal.valueOf(cantidad)));
             }
         }
+
+        Object[] totalRow = { "TOTAL SIN RECARGO", total, "" };
+        Object[] vaciaRow = { "", "", "" };
+        model.addRow(vaciaRow);
+        model.addRow(totalRow);
 
         tbDetallesPedido.setModel(model);
         // Ajustar el ancho de las columnas
@@ -259,8 +302,8 @@ public class FrmVerDetallesPedido extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnPagarMercadoPago;
+    private javax.swing.JButton btnPagarTransferencia;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

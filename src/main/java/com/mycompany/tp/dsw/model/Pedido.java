@@ -26,8 +26,9 @@ public class Pedido implements Observable<Pedido> { // Pedido pedido por un clie
 
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
-        this.estado = Estado.ACEPTADO;
+        this.estado = Estado.RECIBIDO;
         this.items = new ArrayList<>();
+        addObserver(cliente);
     }
 
     // ver luego en siguiente etapa el constructor
@@ -36,6 +37,7 @@ public class Pedido implements Observable<Pedido> { // Pedido pedido por un clie
         this.items = new ArrayList<>();
         this.estado = estado;
         this.cliente = cliente;
+
     }
 
     public Pedido(Integer id, Estado estado, Cliente cliente, Pago formaPago) {

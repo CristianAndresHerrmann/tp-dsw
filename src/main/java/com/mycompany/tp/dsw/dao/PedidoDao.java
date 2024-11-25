@@ -76,10 +76,16 @@ public class PedidoDao {
                 .orElse(null);
     }
 
+    /**
+     * Busca todos los pedidos de un restaurante
+     * - Sin importar el estado en el que se encuentran
+     * 
+     * @param idVendedor
+     * @return
+     */
     public List<Pedido> findByVendedor(Integer idVendedor) {
         return pedidos.stream()
-                .filter(p -> p.getEstado().equals(Estado.RECIBIDO) &&
-                        !p.getItems().isEmpty() &&
+                .filter(p -> !p.getItems().isEmpty() &&
                         p.getItems().get(0).getItemMenu().getVendedor().getId().equals(idVendedor))
                 .toList();
     }

@@ -14,7 +14,6 @@ import com.mycompany.tp.dsw.exception.PedidoNoEncontradoException;
 import com.mycompany.tp.dsw.exception.VendedorNoEncontradoException;
 import com.mycompany.tp.dsw.model.ItemMenu;
 import com.mycompany.tp.dsw.model.ItemPedido;
-import com.mycompany.tp.dsw.model.Pedido;
 import com.mycompany.tp.dsw.service.MemoryManager;
 
 /**
@@ -25,13 +24,11 @@ public class ItemPedidoMemory {
     private ItemsPedidoDao itemPedidoDao;
     private MemoryManager memoryManager;
     private ItemMenuMemory itemMenuMemory;
-    private PedidoMemory pedidoMemory;
 
     public ItemPedidoMemory() {
         itemPedidoDao = new ItemsPedidoDao();
         memoryManager = MemoryManager.getInstance();
         itemMenuMemory = memoryManager.getItemMenuMemory();
-        pedidoMemory = memoryManager.getPedidoMemory();
     }
 
     /**
@@ -120,7 +117,7 @@ public class ItemPedidoMemory {
     private ItemPedido parseItemPedido(ItemPedidoDto itemPedidoDto) {
         ItemMenu itemMenu = itemMenuMemory.buscarItemMenuPorNombre(itemPedidoDto.getItemMenuText()).get(0);
         itemPedidoDto.setItemMenu(itemMenu);
-        ItemPedido itemPedido =  new ItemPedido(itemPedidoDto);
+        ItemPedido itemPedido = new ItemPedido(itemPedidoDto);
         return itemPedido;
     }
 

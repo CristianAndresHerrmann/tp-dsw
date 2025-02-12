@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mycompany.tp.dsw.dao.BebidaDao;
+import com.mycompany.tp.dsw.dao.DAOFactory;
 import com.mycompany.tp.dsw.dto.BebidaDto;
 import com.mycompany.tp.dsw.model.Bebida;
 import com.mycompany.tp.dsw.model.ItemMenu;
 
 public class BebidaService extends ItemMenuService {
 
+    private DAOFactory factory;
+
     private BebidaDao bebidaDao;
 
     public BebidaService() {
-        bebidaDao = new BebidaDao();
+        factory = DAOFactory.getInstance();
+        bebidaDao = factory.getBebidaDao();
     }
 
     /**

@@ -3,16 +3,19 @@ package com.mycompany.tp.dsw.service;
 import java.util.List;
 
 import com.mycompany.tp.dsw.dao.ClienteDao;
+import com.mycompany.tp.dsw.dao.DAOFactory;
 import com.mycompany.tp.dsw.dto.ClienteDto;
 import com.mycompany.tp.dsw.model.Cliente;
 import com.mycompany.tp.dsw.model.Coordenada;
 
 public class ClienteService {
 
+    private DAOFactory factory;
     private ClienteDao clienteDao;
 
     public ClienteService() {
-        clienteDao = new ClienteDao();
+        factory = DAOFactory.getInstance();
+        clienteDao = factory.getClienteDao();
     }
 
     /**

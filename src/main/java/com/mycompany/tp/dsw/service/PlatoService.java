@@ -3,6 +3,7 @@ package com.mycompany.tp.dsw.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mycompany.tp.dsw.dao.DAOFactory;
 import com.mycompany.tp.dsw.dao.PlatoDao;
 import com.mycompany.tp.dsw.dto.PlatoDto;
 import com.mycompany.tp.dsw.model.ItemMenu;
@@ -10,10 +11,12 @@ import com.mycompany.tp.dsw.model.Plato;
 
 public class PlatoService extends ItemMenuService {
 
+    private DAOFactory factory;
     private PlatoDao platoDao;
 
     public PlatoService() {
-        platoDao = new PlatoDao();
+        factory = DAOFactory.getInstance();
+        platoDao = factory.getPlatoDao();
     }
 
     /**

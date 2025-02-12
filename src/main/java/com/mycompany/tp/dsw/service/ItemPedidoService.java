@@ -3,15 +3,18 @@ package com.mycompany.tp.dsw.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.mycompany.tp.dsw.dao.DAOFactory;
 import com.mycompany.tp.dsw.dao.ItemsPedidoDao;
 import com.mycompany.tp.dsw.exception.ItemNoEncontradoException;
 import com.mycompany.tp.dsw.model.ItemPedido;
 
 public class ItemPedidoService {
+    private DAOFactory factory;
     private ItemsPedidoDao itemPedidoDao;
 
     public ItemPedidoService() {
-        itemPedidoDao = new ItemsPedidoDao();
+        factory = DAOFactory.getInstance();
+        itemPedidoDao = factory.getItemsPedidoDao();
     }
 
     /**

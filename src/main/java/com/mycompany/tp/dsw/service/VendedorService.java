@@ -2,6 +2,7 @@ package com.mycompany.tp.dsw.service;
 
 import java.util.List;
 
+import com.mycompany.tp.dsw.dao.DAOFactory;
 import com.mycompany.tp.dsw.dao.VendedorDao;
 import com.mycompany.tp.dsw.dto.VendedorDto;
 import com.mycompany.tp.dsw.exception.VendedorNoEncontradoException;
@@ -10,10 +11,12 @@ import com.mycompany.tp.dsw.model.Vendedor;
 
 public class VendedorService {
 
+    private DAOFactory factory;
     private VendedorDao vendedorDao;
 
     public VendedorService() {
-        vendedorDao = new VendedorDao();
+        factory = DAOFactory.getInstance();
+        vendedorDao = factory.getVendedorDao();
     }
 
     /**

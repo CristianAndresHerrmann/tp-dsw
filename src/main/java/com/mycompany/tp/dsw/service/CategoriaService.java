@@ -3,15 +3,19 @@ package com.mycompany.tp.dsw.service;
 import java.util.List;
 
 import com.mycompany.tp.dsw.dao.CategoriaDao;
+import com.mycompany.tp.dsw.dao.DAOFactory;
 import com.mycompany.tp.dsw.exception.CategoriaNoEncontradaException;
 import com.mycompany.tp.dsw.model.Categoria;
 
 public class CategoriaService {
 
-        CategoriaDao categoriaDao;
+        private DAOFactory factory;
+
+        private CategoriaDao categoriaDao;
 
         public CategoriaService() {
-                categoriaDao = new CategoriaDao();
+                factory = DAOFactory.getInstance();
+                categoriaDao = factory.getCategoriaDao();
         }
 
         /**

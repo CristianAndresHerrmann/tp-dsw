@@ -254,6 +254,7 @@ public class PedidoController {
      */
     public void actualizarPedido(PedidoDto pedidoDto, ClienteDto clienteDto) throws PedidoNoEncontradoException {
         Pedido pedido = pedidoService.buscarPedidoPorId(pedidoDto.getId());
+        pedido.setFormaPago(mapToDto(pedidoDto.getFormaPagoDto()));
         Cliente cliente = clienteService.buscarClientePorId(clienteDto.getId());
         pedido.addObserver(cliente);
         pedido.setEstado(Estado.PAGADO);
@@ -272,6 +273,7 @@ public class PedidoController {
      */
     public BigDecimal calcularTotalAPagar(PedidoDto pedidoDto) throws PedidoNoEncontradoException {
         Pedido pedido = pedidoService.buscarPedidoPorId(pedidoDto.getId());
+        pedido.setFormaPago(mapToDto(pedidoDto.getFormaPagoDto()));
         return pedido.total();
     }
 
@@ -314,6 +316,30 @@ public class PedidoController {
                 .itemMenuDto(itemMenuController.mapToDto(itemPedido.getItemMenu()))
                 .build();
 
+    }
+
+    private Pago mapToDto(PagoDto pagoDto) {
+        switch (pagoDto.getClass().getSimpleName().toLowerCase()) {
+            case "transferenciadto":
+                TransferenciaDto t = (TransferenciaDto) pagoDto;
+                return Transferencia.builder()
+                        .id(t.getId())
+                        .fechaPago(t.getFechaPago())
+                        .monto(t.getMonto())
+                        .cbu(t.getCbu())
+                        .cuit(t.getCuit())
+                        .build();
+            case "mercadopagodto":
+                MercadoPagoDto mp = (MercadoPagoDto) pagoDto;
+                return MercadoPago.builder()
+                        .id(mp.getId())
+                        .fechaPago(mp.getFechaPago())
+                        .monto(mp.getMonto())
+                        .alias(mp.getAlias())
+                        .build();
+            default:
+                return null;
+        }
     }
 
     /**

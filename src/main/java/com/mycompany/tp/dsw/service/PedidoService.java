@@ -2,6 +2,7 @@ package com.mycompany.tp.dsw.service;
 
 import java.util.List;
 
+import com.mycompany.tp.dsw.dao.DAOFactory;
 import com.mycompany.tp.dsw.dao.PedidoDao;
 import com.mycompany.tp.dsw.dto.ItemMenuDto;
 import com.mycompany.tp.dsw.dto.ItemPedidoDto;
@@ -24,16 +25,19 @@ import com.mycompany.tp.dsw.model.relacion.PedidoItemPedido;
 
 public class PedidoService {
 
+    private DAOFactory factory;
+
     private PedidoDao pedidoDao;
     private ClienteService clienteService;
     private ServiceManager serviceManager;
     private ItemMenuService itemMenuService;
 
     public PedidoService() {
+        factory = DAOFactory.getInstance();
         serviceManager = ServiceManager.getInstance();
         clienteService = serviceManager.getClienteService();
         itemMenuService = serviceManager.getItemMenuService();
-        pedidoDao = new PedidoDao();
+        pedidoDao = factory.getPedidoDao();
     }
 
     /**
@@ -266,7 +270,7 @@ public class PedidoService {
 
         return Pedido.builder()
                 .cliente(cliente)
-                .estado(Estado.ACEPTADO)
+                .estado(Estado.RECIBIDO)
                 .build();
     }
 }

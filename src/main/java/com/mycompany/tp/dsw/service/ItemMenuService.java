@@ -3,6 +3,7 @@ package com.mycompany.tp.dsw.service;
 import java.util.List;
 
 import com.mycompany.tp.dsw.dao.CategoriaDao;
+import com.mycompany.tp.dsw.dao.DAOFactory;
 import com.mycompany.tp.dsw.dao.ItemMenuDao;
 import com.mycompany.tp.dsw.dto.BebidaDto;
 import com.mycompany.tp.dsw.dto.ItemMenuDto;
@@ -17,14 +18,18 @@ import com.mycompany.tp.dsw.model.Vendedor;
 
 public class ItemMenuService {
 
+    private DAOFactory factory;
+
     private CategoriaDao categoriaDao;
     private ItemMenuDao itemMenuDao;
     private VendedorService vendedorService;
     private ServiceManager serviceManager;
 
     public ItemMenuService() {
-        itemMenuDao = new ItemMenuDao();
-        categoriaDao = new CategoriaDao();
+        factory = DAOFactory.getInstance();
+
+        itemMenuDao = factory.getItemMenuDao();
+        categoriaDao = factory.getCategoriaDao();
         serviceManager = ServiceManager.getInstance();
         vendedorService = serviceManager.getVendedorService();
 

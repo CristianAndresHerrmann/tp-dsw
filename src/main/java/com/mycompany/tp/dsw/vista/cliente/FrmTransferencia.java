@@ -5,6 +5,7 @@
 package com.mycompany.tp.dsw.vista.cliente;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import com.mycompany.tp.dsw.controller.ClienteController;
 import com.mycompany.tp.dsw.controller.PagoController;
@@ -200,7 +201,7 @@ public class FrmTransferencia extends javax.swing.JFrame {
 
                         MensajeAlerta.mostrarConfirmacion(
                                         "Pagar con transferencia tiene un recargo del 2%.\nMonto total a pagar: "
-                                                        + totalAPagar,
+                                                        + totalAPagar.setScale(2, RoundingMode.HALF_UP),
                                         "Pagar con Transferencia", this);
 
                         pedidoController.actualizarPedido(pedidoDto, clienteDto);

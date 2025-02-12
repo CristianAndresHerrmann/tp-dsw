@@ -5,6 +5,7 @@
 package com.mycompany.tp.dsw.vista.cliente;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import com.mycompany.tp.dsw.controller.ClienteController;
 import com.mycompany.tp.dsw.controller.PagoController;
@@ -137,7 +138,7 @@ public class FrmMercadoPago extends javax.swing.JFrame {
             BigDecimal totalAPagar = pedidoController.calcularTotalAPagar(pedidoDto);
 
             MensajeAlerta.mostrarConfirmacion(
-                    "Pagar con mercado pago tiene un recargo del 4%.\nMonto total a pagar: " + totalAPagar,
+                    "Pagar con mercado pago tiene un recargo del 4%.\nMonto total a pagar: " + totalAPagar.setScale(2,RoundingMode.HALF_UP),
                     "Pagar con Transferencia", this);
 
             pedidoController.actualizarPedido(pedidoDto, clienteDto);

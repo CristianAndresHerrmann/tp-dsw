@@ -148,17 +148,17 @@ INSERT INTO Pago (fecha, monto, tipo_pago, alias, cbu, cuit) VALUES (CURDATE(), 
 INSERT INTO Pago (fecha, monto, tipo_pago, alias, cbu, cuit) VALUES (CURDATE(), 700.00, 'Transferencia', 'Alias6', '1234567789', '20-67890123-4');
 
 -- Insertar datos en la tabla 'pedidos'
-INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (1, 1, 'ACEPTADO');
+INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (1, 1, 'PAGADO');
 
-INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (2, 2, 'ACEPTADO');
+INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (2, 2, 'PAGADO');
 
-INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (3, 3, 'ACEPTADO');
+INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (3, 3, 'PAGADO');
 
-INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (4, 4, 'ACEPTADO');
+INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (4, 4, 'PAGADO');
 
-INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (5, 5, 'ACEPTADO');
+INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (5, 5, 'PAGADO');
 
-INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (6, 6, 'ACEPTADO');
+INSERT INTO pedido (cliente_id, formaPago_id, estado) VALUES (6, 6, 'PAGADO');
 
 -- Insertar datos en la tabla 'item_pedidos'
 INSERT INTO item_pedido (cantidad, itemMenu_id, pedido_item_pedido_id) VALUES (2, 1, NULL);
